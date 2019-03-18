@@ -1,0 +1,44 @@
+*{ 
+    box-sizing: border-box;
+  }
+li{
+    list-style: none;
+}
+nav *{
+    display:inline-block;
+  }
+nav{
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #c9c9c9;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 35px;
+}
+li a, .brand{
+    font-size: 13px;
+    font-weight: 400;
+    color: #3E2400;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    text-decoration: none;
+    letter-spacing: 1px;
+    font-weight: 700;
+    /* transform: scaleX(1.4); */
+    /* transform-origin: 0 0; */
+    padding-left: 10px;
+  }
+  /* ul {
+    padding-left: 0;
+  } */
+  nav a {
+    margin: 5px;
+    margin-left: 10px;
+  }
+  .navbar-anchors{ 
+    text-decoration: none;
+    /* position: absolute; */
+    right: 15px;
+  }
