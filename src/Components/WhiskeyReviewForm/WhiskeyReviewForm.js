@@ -1,9 +1,13 @@
 import React, { Component } from 'react'
 
 export default class WhiskeyReviewForm extends Component {
+  handleSubmit = (e) =>{
+    e.preventDefault();
+    
+  }
   render() {
     return (
-      <form>
+      <form className="whiskeyReviewForm" onSubmit={this.handleSubmit}>
         <h2>Review for Macallan</h2>
         <label>Rating: </label>
         <select name="" id="">
