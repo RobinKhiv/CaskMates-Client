@@ -3,7 +3,7 @@ import TokenService from './token-api-service'
 
 
 const WhiskeyApiService = {
-  getThings() {
+  getWhiskeys() {
     return fetch(`${config.API_ENDPOINT}/whiskeys`, {
       headers: {
       },

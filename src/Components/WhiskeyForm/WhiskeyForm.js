@@ -6,6 +6,7 @@ export default class WhiskeyForm extends Component {
       e.preventDefault();
       const {drinkName, drinkImage, origin, abv, price, content, nose, palate, finish} = e.target;
       whiskeysService.postWhiskey(drinkName.value, drinkImage.value, origin.value, abv.value, price.value, content.value, nose.value, palate.value, finish.value)
+      console.log()
       // .then(this.context.addReview)
       // .then(() => {
       //   text.value = ''

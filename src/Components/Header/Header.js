@@ -35,11 +35,11 @@ export default class Header extends Component {
   render() {
     return (
       <nav role="navigation" className="header">
-          <Link to='/' className="brand">Taste of Whiskey</Link>
+          <Link to='/' className="brand">Cask Mates</Link>
         <div className="navbar-anchors">
             <ul>
                 <li>
-                  <Link to='/whiskeyLookup'>Whiskey Lookup</Link>
+                  <Link to='/whiskeys'>Whiskey Lookup</Link>
                 </li>
                 <li>
                   <Link to='/list'>List</Link>

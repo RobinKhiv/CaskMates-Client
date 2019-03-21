@@ -30,8 +30,12 @@ export default class Registration extends Component {
   }
 
   render() {
+    const {error} = this.state
     return (
       <form className="registration-form" onSubmit={this.handleRegistrationSubmit}>
+        <div role="alert">
+          {error && <p className="red">{error}</p>}
+        </div>
         <label htmlFor="user_name">Username : </label>
         <input type="text" name="user_name" className="user_name" required/>
         <label htmlFor="full_name">Full Name : </label>
@@ -40,7 +44,7 @@ export default class Registration extends Component {
         <input type="text" name="nickname" className="nickname"/>
         <label htmlFor="password">password : </label>
         <input type="text" name="password" className="password" required/>
-        <input type="submit" name="submit" value="submit"/>
+        <input type="submit" name="submit" value="Register"/>
       </form>
     )
   }
