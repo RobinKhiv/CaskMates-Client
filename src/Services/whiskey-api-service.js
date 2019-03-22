@@ -27,7 +27,7 @@ const WhiskeyApiService = {
       )
   },
   getWhiskeyReviews(whiskeyId) {
-    return fetch(`${config.API_ENDPOINT}/whiskeyss/${whiskeyId}/reviews`, {
+    return fetch(`${config.API_ENDPOINT}/whiskeys/${whiskeyId}/reviews`, {
       headers: {
         'authorization': `bearer ${TokenService.getAuthToken()}`
       },

@@ -14,15 +14,15 @@ export default class WhiskeyPage extends Component {
     WhiskeyApiServices.getWhiskey(whiskeyId)
       .then(this.context.setWhiskey)
       .catch(this.context.setError)
-    WhiskeyApiServices.getWhiskeyReviews(whiskeyId)
-      .then(this.context.setReviews)
-      .catch(this.context.setError)
+    // WhiskeyApiServices.getWhiskeyReviews(whiskeyId)
+    //   .then(this.context.setReviews)
+    //   .catch(this.context.setError)
  }
 
   render() {
     return (
       <div>
-        <p> Whiskey Page</p>
+        <p> {this.context.whiskey.title}</p>
         <p> ID :{this.props.match.params.whiskeyId}</p>
        
       </div>
