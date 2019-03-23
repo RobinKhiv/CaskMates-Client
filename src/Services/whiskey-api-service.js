@@ -35,9 +35,22 @@ const WhiskeyApiService = {
       .then(res =>
         (!res.ok)
           ? res.json().then(e => Promise.reject(e))
-          : res.json().then(res => Promise.resolve(res))
+          : res.json()
       )
   },
+  getWhiskeyList(){
+    return fetch(`${config.API_ENDPOINT}/lists`, {
+      headers: {
+        'authorization': `bearer ${TokenService.getAuthToken()}`
+      },
+    })
+      .then(res =>
+        (!res.ok)
+          ? res.json().then(e => Promise.reject(e))
+          : res.json()
+      )
+  },
+
   postReview(whiskeyId, text, rating) {
     return fetch(`${config.API_ENDPOINT}/reviews`, {
       method: 'POST',
@@ -55,8 +68,7 @@ const WhiskeyApiService = {
         (!res.ok)
           ? res.json().then(e => Promise.reject(e))
           : res.json()
-      )
-      
+      )    
   },
   postWhiskey(drinkName, image, origin, abv, price, content, nose, palate, finish) {
     return fetch(`${config.API_ENDPOINT}/whiskeys`, {
