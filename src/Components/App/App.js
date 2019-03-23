@@ -10,23 +10,33 @@ import WhiskeyLookupPage from '../../Routes/WhiskeyLookupPage';
 import WhiskeyPage from '../../Routes/WhiskeyPage';
 import RegistrationPage from '../../Routes/RegistrationPage';
 import NotFoundPage from '../../Routes/NotFoundPage';
+import PrivateRoute from '../../Components/Utils/PrivateRoute'
+import PublicOnlyRoute from '../../Components/Utils/PublicOnlyRoute'
 import './App.css';
 
 class App extends Component {
+  state = {hasError: false }
+  static getDerivedStateFromError(error){
+    console.error(error)
+    return {hasError:true}
+  }
   render() {
     return (
       <React.Fragment>
-        <Header/>
+        <header>
+
+         <Header />
+        </header>
         <main role='main'>
           <Switch>
             <Route exact path={'/'} component={LandingPage} />
             <Route path={'/whiskeyList'} component={ListPage} />
             <Route exact path={'/whiskeys'} component={WhiskeyLookupPage}/>
             <Route exact path={'/whiskeys/:whiskeyId'} component={WhiskeyPage}/>
-            <Route path={'/whiskeys/:whiskeyId/reviewWhiskey'} component={ReviewWhiskeyPage}/>
+            <PrivateRoute path={'/whiskeys/:whiskeyId/reviewWhiskey'} component={ReviewWhiskeyPage}/>
             <Route path={'/addWhiskey'} component={AddWhiskeyPage} />
-            <Route path={'/login'} component={LoginPage} />
-            <Route path={'/register'} component={RegistrationPage} />
+            <PublicOnlyRoute path={'/login'} component={LoginPage} />
+            <PublicOnlyRoute path={'/register'} component={RegistrationPage} />
             <Route component={NotFoundPage} />
           </Switch>
         </main>

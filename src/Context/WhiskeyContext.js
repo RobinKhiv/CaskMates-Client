@@ -18,7 +18,7 @@ export class WhiskeyProvider extends Component {
   state = {
     whiskey: {},
     error: null,
-    reviews: {}
+    reviews: []
   }
   setError = error => {
     console.error(error)
@@ -28,11 +28,10 @@ export class WhiskeyProvider extends Component {
     this.setState({error: null})
   }
   setWhiskey = whiskey => {
-    console.log(whiskey);
+    
     this.setState({ whiskey })
   }
   setReviews = reviews => {
-    console.log(reviews);
     this.setState({ reviews })
   }
   clearWhiskey = () => {

@@ -23,7 +23,7 @@ const WhiskeyApiService = {
       .then(res =>
         (!res.ok)
           ? res.json().then(e => Promise.reject(e))
-          : res.json()
+          : res.json().then(res => Promise.resolve(res))
       )
   },
   getWhiskeyReviews(whiskeyId) {
@@ -35,7 +35,7 @@ const WhiskeyApiService = {
       .then(res =>
         (!res.ok)
           ? res.json().then(e => Promise.reject(e))
-          : res.json()
+          : res.json().then(res => Promise.resolve(res))
       )
   },
   postReview(whiskeyId, text, rating) {
