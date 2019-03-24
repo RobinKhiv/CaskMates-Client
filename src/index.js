@@ -3,16 +3,20 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './Components/App/App';
 import {BrowserRouter} from 'react-router-dom';
-import{ WhiskeyListProvider} from './Context/WhiskeyListContext';
+import{ WhiskeySearchProvider} from './Context/WhiskeySearchContext';
 import{WhiskeyProvider} from './Context/WhiskeyContext';
+import {WhiskeyListProvider} from './Context/WhiskeyListContext';
+
 
 ReactDOM.render(
   <BrowserRouter>
-    <WhiskeyListProvider>
+    <WhiskeySearchProvider>
       <WhiskeyProvider>
-        <App />
+        <WhiskeyListProvider>
+          <App />
+        </WhiskeyListProvider>
       </WhiskeyProvider>
-    </WhiskeyListProvider>
+    </WhiskeySearchProvider>
   </BrowserRouter>, 
   document.getElementById('root')
 );

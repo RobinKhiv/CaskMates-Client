@@ -4,12 +4,12 @@ import './WhiskeyListItem.css'
 
 export default class WhiskeyListItem extends Component {
   render() {
-    const {whiskey} = this.props
+    const {whiskey} = this.props;
     return (
     <div className="col-3 WhiskeyList">
       <Link to={`/whiskeys/${whiskey.id}`} className='whiskeyListItem'>
       <div className="whiskeyListText">
-        <h2>{whiskey.title}</h2>
+        <h2>{whiskey.whiskeyName}</h2>
         <p> {whiskey.rating} </p>
       </div>
       </Link>

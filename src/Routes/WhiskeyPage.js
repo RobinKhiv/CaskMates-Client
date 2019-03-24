@@ -30,7 +30,7 @@ export default class WhiskeyPage extends Component {
     return (
     <React.Fragment>
     <section>
-      <h1>{whiskey.title}</h1>
+      <h1>{whiskey.whiskeyName}</h1>
       <h2>Rating: {whiskey.average_review_rating}</h2>
       <div><strong>Origin:</strong> {whiskey.origin}</div>
       <div><strong>Abv: </strong> {whiskey.abv === undefined ? 'Not Avaliable' : `${whiskey.abv}%`}</div>

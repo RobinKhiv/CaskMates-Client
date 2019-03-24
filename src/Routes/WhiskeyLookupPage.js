@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import WhiskeyListContext from '../Context/WhiskeyListContext';
+import WhiskeySearchContext from '../Context/WhiskeySearchContext';
 import WhiskeyApiService from '../Services/whiskey-api-service';
 import WhiskeyListItem from '../Components/WhiskeyListItem/WhiskeyListItem'
 
 export default class WhiskeyLookupPage extends Component {
-  static contextType = WhiskeyListContext
+  static contextType = WhiskeySearchContext
 
   componentDidMount() {
     this.context.clearError()

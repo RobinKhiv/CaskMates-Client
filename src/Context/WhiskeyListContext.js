@@ -1,46 +1,53 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
 const WhiskeyListContext = React.createContext({
-  whiskeyList: [],
-  error: null,
-  setError: () => {},
-  clearError: () => {},
-  setThingList: () => {},
+    favoriteList: [],
+    alreadyTried: [],
+    wishList: [],
+    setWhiskeyList: () => {},
+    setError: () => {},
+    clearError: () => {}
 })
 export default WhiskeyListContext;
 
 export class WhiskeyListProvider extends Component {
   state = {
-    whiskeyList: [],
-    error: null,
-  };
-
+      favoriteList: [],
+      alreadyTried: [],
+      wishList: [],
+      error: null
+  } 
   setWhiskeyList = whiskeyList => {
-    this.setState({ whiskeyList })
+    const favLst = whiskeyList.filter(whiskey => whiskey.listName === 'Favorite List')
+    const alredyTriedLst = whiskeyList.filter(whiskey => whiskey.listName === 'Already Tried')
+    const wishLst = whiskeyList.filter(whiskey => whiskey.listName === 'Wish List')
+    this.setState({ favoriteList: favLst});
+    this.setState({ alreadyTried: alredyTriedLst});
+    this.setState({ wishList: wishLst });
   }
-
   setError = error => {
     console.error(error)
     this.setState({ error })
   }
-
   clearError = () => {
     this.setState({ error: null })
   }
 
+
   render() {
     const value = {
-      whiskeyList: this.state.whiskeyList,
-      error: this.state.error,
-      setError: this.setError,
-      clearError: this.clearError,
-      setWhiskeyList: this.setWhiskeyList,
+        favoriteList: this.state.favoriteList,
+        alreadyTried: this.state.alreadyTried,
+        wishList: this.state.wishList,
+        error: this.state.error,
+        setError: this.setError,
+        setWhiskeyList: this.setWhiskeyList,
+        clearError: this.clearError
     }
     return (
       <WhiskeyListContext.Provider value={value}>
-        {this.props.children}
+          {this.props.children}
       </WhiskeyListContext.Provider>
     )
   }
 }
- 

@@ -42,7 +42,7 @@ export default class Header extends Component {
                   <Link to='/whiskeys'>Whiskey Lookup</Link>
                 </li>
                 <li>
-                  <Link to='/list'>List</Link>
+                  <Link to='/whiskeyList'>List</Link>
                 </li>
                 <li>
                   <Link to='/addWhiskey'>Add Whiskey</Link>
