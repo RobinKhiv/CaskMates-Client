@@ -5,8 +5,9 @@ export default class WhiskeyForm extends Component {
   onSubmit = e =>{
       e.preventDefault();
       const {drinkName, drinkImage, origin, abv, price, content, nose, palate, finish} = e.target;
-      whiskeysService.postWhiskey(drinkName.value, drinkImage.value, origin.value, abv.value, price.value, content.value, nose.value, palate.value, finish.value)
-      console.log()
+      whiskeysService.postWhiskey(drinkName.value, drinkImage.value, origin.value, parseFloat(abv.value), parseFloat(price.value), content.value, nose.value, palate.value, finish.value)
+      .then(whiskeyId => this.props.onAddSuccess(whiskeyId))
+    
       // .then(this.context.addReview)
       // .then(() => {
       //   text.value = ''
@@ -15,6 +16,7 @@ export default class WhiskeyForm extends Component {
  }
   
   render() {
+
     return (
       <form onSubmit={this.onSubmit}>
         <h1>Add a Drink</h1>

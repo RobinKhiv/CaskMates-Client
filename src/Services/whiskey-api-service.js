@@ -50,7 +50,24 @@ const WhiskeyApiService = {
           : res.json()
       )
   },
-
+  addToList(whiskey_id, list_id){
+    return fetch(`${config.API_ENDPOINT}/lists`, {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+        'authorization': `bearer ${TokenService.getAuthToken()}`
+      },
+      body: JSON.stringify({
+        whiskey_id,
+        list_id
+      })
+    })
+    .then(res => 
+      (!res.ok) 
+      ? res.json().then(e => Promise.reject(e))
+      : res.json()
+    )
+  },
   postReview(whiskeyId, text, rating) {
     return fetch(`${config.API_ENDPOINT}/reviews`, {
       method: 'POST',
@@ -78,7 +95,7 @@ const WhiskeyApiService = {
         'authorization': `bearer ${TokenService.getAuthToken()}`
       },
       body: JSON.stringify({
-        title: drinkName,
+        whiskey_name: drinkName,
         image,
         origin,
         abv,

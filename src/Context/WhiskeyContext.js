@@ -32,7 +32,6 @@ export class WhiskeyProvider extends Component {
     this.setState({ whiskey })
   }
   setReviews = reviews => {
-    console.log(reviews)
     this.setState({ reviews })
   }
   clearWhiskey = () => {

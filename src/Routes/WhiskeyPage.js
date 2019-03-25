@@ -34,7 +34,7 @@ export default class WhiskeyPage extends Component {
       <h2>Rating: {whiskey.average_review_rating}</h2>
       <div><strong>Origin:</strong> {whiskey.origin}</div>
       <div><strong>Abv: </strong> {whiskey.abv === undefined ? 'Not Avaliable' : `${whiskey.abv}%`}</div>
-      <div> <strong>Price: </strong> {whiskey.price === undefined ? 'Not Avaliable' : `$${whiskey.price}`}</div>
+      <div> <strong>Price: </strong> {whiskey.price === undefined ? 'Not Avaliable' : whiskey.price}</div>
       <div className="desc"><strong>Description: </strong> 
       {whiskey.content}
       </div>
@@ -49,6 +49,8 @@ export default class WhiskeyPage extends Component {
     </section>
     <section className="reviews">
       <ul className='WhiskeyPage__review-list'>
+      <input type="button" name="addReview" value="Add Review"/>
+      <div className="review-title"><strong>Reviews</strong></div>
         <WhiskeyReviews reviews={reviews} /> 
       </ul>
     </section>
@@ -60,7 +62,6 @@ export default class WhiskeyPage extends Component {
 function WhiskeyReviews({ reviews = [] }) {
   return reviews.map(review =>
         <li className='review' key={review.id}>
-          <div className="review-title"><strong>Reviews</strong></div>
           <h3>{review.user.user_name}</h3>
           <div><strong>Rating:</strong> {review.rating} Star</div>
           <div><strong>Nose:</strong> {review.nose}</div>
