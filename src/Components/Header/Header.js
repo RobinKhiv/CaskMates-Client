@@ -2,11 +2,16 @@ import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 import './header.css';
 import TokenService from '../../Services/token-api-service';
+import WhiskeyContext from '../../Context/WhiskeyContext';
 
 export default class Header extends Component {
+  static contextType = WhiskeyContext;
+
   handleLogoutClick = () => {
     TokenService.clearAuthToken()
+    this.context.userLogout();
   }
+
   renderLogoutLink() {
     return (
       <div className='Header__logged-in'>

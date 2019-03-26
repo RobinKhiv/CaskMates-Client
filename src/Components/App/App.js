@@ -13,18 +13,15 @@ import NotFoundPage from '../../Routes/NotFoundPage';
 import PrivateRoute from '../../Components/Utils/PrivateRoute'
 import PublicOnlyRoute from '../../Components/Utils/PublicOnlyRoute'
 import './App.css';
+import WhiskeyContext from '../../Context/WhiskeyContext';
 
 class App extends Component {
-  state = {hasError: false }
-  static getDerivedStateFromError(error){
-    console.error(error)
-    return {hasError:true}
-  }
+  static contextType = WhiskeyContext;
+
   render() {
     return (
       <React.Fragment>
-        <header>
-
+        <header userLogin={this.loggedIn}>
          <Header />
         </header>
         <main role='main'>

@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import LoginForm from '../Components/LoginForm/LoginForm';
+import WhiskeyContext from '../Context/WhiskeyContext';
+
 
 export default class LoginPage extends Component {
   static defaultProps = {
@@ -8,10 +10,12 @@ export default class LoginPage extends Component {
       push: () => {},
     }
   }
+  static contextType = WhiskeyContext;
 
   handleLoginSuccess = () => {
     const { location, history } = this.props
     const destination = (location.state || {}).from || '/'
+    this.context.userLogin();
     this.props.history.push('/whiskeys')
   }
 

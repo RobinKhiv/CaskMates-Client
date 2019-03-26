@@ -38,6 +38,15 @@ const WhiskeyApiService = {
           : res.json()
       )
   },
+  removeWhiskeyFromList(list_id){
+    return fetch(`${config.API_ENDPOINT}/lists/${list_id}`,{
+      method: 'DELETE',
+      headers: {
+        'authorization': `bearer ${TokenService.getAuthToken()}`
+      }
+    })
+    
+  },
   getWhiskeyList(){
     return fetch(`${config.API_ENDPOINT}/lists`, {
       headers: {
