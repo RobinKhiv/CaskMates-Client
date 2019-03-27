@@ -1,35 +1,37 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
-import './WhiskeyListItem.css'
+// import './WhiskeyListItem.css'
 import WhiskeyApiService from '../../Services/whiskey-api-service';
 import WhiskeyListContext from '../../Context/WhiskeyListContext';
 
 
-export default class WhiskeyListItem extends Component {
+export default class UserListItem extends Component {
   constructor(){
     super();
     this.state={
-      showAddMenu: false
+      showMoveMenu: false
     }
   }
   static contextType = WhiskeyListContext;
 
-  showAddMenu = (e) => {
+  showMoveMenu = (e) => {
     e.preventDefault();
-    this.setState({showAddMenu: true}, () => {
-      document.addEventListener('mouseup', this.closeAddMenu)
+    this.setState({showMoveMenu: true}, () => {
+      document.addEventListener('mouseup', this.closeMoveMenu)
     });
   }
   
-  closeAddMenu = e => {
+  closeMoveMenu = e => {
     e.stopPropagation();
-    this.setState({showAddMenu: false}, () => {
-      document.removeEventListener('mouseup', this.closeAddMenu)
+    this.setState({showMoveMenu: false}, () => {
+      document.removeEventListener('mouseup', this.closeMoveMenu)
     })
   }
 
-  addToList = (whiskey_Id, list_id) => {
-    WhiskeyApiService.addToList(whiskey_Id, list_id)  
+  moveToList = (whiskey_Id, newlist_id, currentListID) => {
+    
+    WhiskeyApiService.moveToList(whiskey_Id, newlist_id, currentListID)  
+    .then(() => console.log('modified'))
   }
 
   deleteFromList = (list_id) => {
@@ -47,12 +49,12 @@ export default class WhiskeyListItem extends Component {
         <p> Rating: {whiskey.average_review_rating} </p>
       </div>
       </Link>
-      <input type="button" name="addWhiskey" value="Add" onMouseDown={this.showAddMenu}/>
-      {this.state.showAddMenu ? (
+      <input type="button" name="moveWhiskey" value="Move to" onMouseDown={this.showMoveMenu}/>
+      {this.state.showMoveMenu ? (
       <div className="menu" >
-        <input type="button" name="FavoriteLst" onMouseUp={() => this.addToList(whiskey.whiskey_id, 1)} value="Favorite List"/>
-        <input type="button" name="alreadyTriedLst" onMouseUp={()=> this.addToList(whiskey.whiskey_id, 3)} value="Already Tried List"/>
-        <input type="button" name="wishLst" onMouseUp={() => this.addToList(whiskey.whiskey_id, 2)} value="Wish List"/>
+        <input type="button" name="FavoriteLst" onMouseUp={() => this.moveToList(whiskey.whiskey_id, 1, whiskey.id)} value="Favorite List"/>
+        <input type="button" name="wishLst" onMouseUp={() => this.moveToList(whiskey.whiskey_id, 2,whiskey.id)} value="Wish List"/>
+        <input type="button" name="alreadyTriedLst" onMouseUp={()=> this.moveToList(whiskey.whiskey_id, 3,whiskey.id)} value="Already Tried List"/>
       </div>) : ""}
       <input type="button" name="delete" onClick={() =>this.deleteFromList(whiskey.id)}value="remove"/>
       <input type="button" name="reviewWhiskey" value="Review"/>

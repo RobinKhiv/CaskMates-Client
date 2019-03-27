@@ -4,10 +4,7 @@ import TokenService from './token-api-service'
 
 const WhiskeyApiService = {
   getWhiskeys() {
-    return fetch(`${config.API_ENDPOINT}/whiskeys`, {
-      headers: {
-      },
-    })
+    return fetch(`${config.API_ENDPOINT}/whiskeys`)
       .then(res =>
         (!res.ok)
           ? res.json().then(e => Promise.reject(e))
@@ -26,6 +23,24 @@ const WhiskeyApiService = {
           : res.json().then(res => Promise.resolve(res))
       )
   },
+  moveToList(whiskey_id, list_id, currentListId){
+    return fetch(`${config.API_ENDPOINT}/lists/${currentListId}`, {
+      method: 'PATCH',
+      headers: {
+        'content-type': 'application/json',
+        'authorization': `bearer ${TokenService.getAuthToken()}`
+      },
+      body: JSON.stringify({
+        whiskey_id,
+        list_id
+      })
+    }) 
+    .then(res =>
+      (!res.ok)
+        ? res.json().then(e => Promise.reject(e))
+        : res.json()
+    )
+  },
   getWhiskeyReviews(whiskeyId) {
     return fetch(`${config.API_ENDPOINT}/whiskeys/${whiskeyId}/reviews`, {
       headers: {
@@ -38,14 +53,13 @@ const WhiskeyApiService = {
           : res.json()
       )
   },
-  removeWhiskeyFromList(list_id){
-    return fetch(`${config.API_ENDPOINT}/lists/${list_id}`,{
+  removeWhiskeyFromApi(list_id){
+    return fetch(`${config.API_ENDPOINT}/lists/${list_id}`, {
       method: 'DELETE',
       headers: {
         'authorization': `bearer ${TokenService.getAuthToken()}`
       }
     })
-    
   },
   getWhiskeyList(){
     return fetch(`${config.API_ENDPOINT}/lists`, {
@@ -68,7 +82,7 @@ const WhiskeyApiService = {
       },
       body: JSON.stringify({
         whiskey_id,
-        list_id
+        list_id,
       })
     })
     .then(res => 
@@ -96,7 +110,7 @@ const WhiskeyApiService = {
           : res.json()
       )    
   },
-  postWhiskey(drinkName, image, origin, abv, price, content, nose, palate, finish) {
+  postWhiskey(whiskey_name, image, origin, abv, price, content, nose, palate, finish) {
     return fetch(`${config.API_ENDPOINT}/whiskeys`, {
       method: 'POST',
       headers: {
@@ -104,7 +118,7 @@ const WhiskeyApiService = {
         'authorization': `bearer ${TokenService.getAuthToken()}`
       },
       body: JSON.stringify({
-        whiskey_name: drinkName,
+        whiskey_name,
         image,
         origin,
         abv,
