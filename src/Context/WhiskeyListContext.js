@@ -8,13 +8,13 @@ const WhiskeyListContext = React.createContext({
     setWhiskeyList: () => {},
     setError: () => {},
     clearError: () => {},
-    removeFromList: () => {}
+    removeFromList: () => {},
+    updateWhiskeyListState: () => {}
 })
 export default WhiskeyListContext;
 
 export class WhiskeyListProvider extends Component {
   state = {
-      showAddMenu: null,
       favoriteList: [],
       alreadyTried: [],
       wishList: [],
@@ -29,7 +29,7 @@ export class WhiskeyListProvider extends Component {
       alreadyTried: alredyTriedLst,
       wishList: wishLst 
     });
-
+  
   }
   removeWhiskeyFromState = list_id =>  {
     const stateCopy = {...this.state};
@@ -39,7 +39,15 @@ export class WhiskeyListProvider extends Component {
     });
     this.setState(stateCopy)
   }
-  
+  updateWhiskeyListState = (currentListId, updatedListName ) => { 
+    const whiskeysList = [...this.state.favoriteList, ...this.state.wishList, ...this.state.alreadyTried ]
+    const findWhiskey = whiskeysList.find(el => el.id === currentListId );
+    findWhiskey.listName = updatedListName;
+    const updateWhiskeyIndex = whiskeysList.findIndex(el => el.id === currentListId);
+    whiskeysList.splice(updateWhiskeyIndex, 1, findWhiskey)
+    this.setWhiskeyList(whiskeysList)
+
+  }
   setError = error => {
     console.error(error)
     this.setState({ error })
@@ -59,7 +67,8 @@ export class WhiskeyListProvider extends Component {
         setError: this.setError,
         setWhiskeyList: this.setWhiskeyList,
         clearError: this.clearError,
-        removeWhiskeyFromState: this.removeWhiskeyFromState
+        removeWhiskeyFromState: this.removeWhiskeyFromState,
+        updateWhiskeyListState: this.updateWhiskeyListState
     }
     
     return (

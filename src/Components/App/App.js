@@ -21,7 +21,7 @@ class App extends Component {
   render() {
     return (
       <React.Fragment>
-        <header userLogin={this.loggedIn}>
+        <header>
          <Header />
         </header>
         <main role='main'>
@@ -30,7 +30,7 @@ class App extends Component {
             <Route path={'/whiskeyList'} component={ListPage} />
             <Route exact path={'/whiskeys'} component={WhiskeyLookupPage}/>
             <Route exact path={'/whiskeys/:whiskeyId'} component={WhiskeyPage}/>
-            <PrivateRoute path={'/whiskeys/:whiskeyId/reviewWhiskey'} component={ReviewWhiskeyPage}/>
+            <PrivateRoute path={'/whiskeys/:whiskeyId/addReview'} component={ReviewWhiskeyPage}/>
             <Route path={'/addWhiskey'} component={AddWhiskeyPage} />
             <PublicOnlyRoute path={'/login'} component={LoginPage} />
             <PublicOnlyRoute path={'/register'} component={RegistrationPage} />

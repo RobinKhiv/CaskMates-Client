@@ -28,10 +28,9 @@ export default class UserListItem extends Component {
     })
   }
 
-  moveToList = (whiskey_Id, newlist_id, currentListID) => {
-    
-    WhiskeyApiService.moveToList(whiskey_Id, newlist_id, currentListID)  
-    .then(() => console.log('modified'))
+  moveToList = (whiskey_Id, newlist_name, currentListID, updatedListName) => {
+    WhiskeyApiService.moveToList(whiskey_Id, newlist_name, currentListID)  
+    .then(() => this.context.updateWhiskeyListState(currentListID, updatedListName))
   }
 
   deleteFromList = (list_id) => {
@@ -52,12 +51,11 @@ export default class UserListItem extends Component {
       <input type="button" name="moveWhiskey" value="Move to" onMouseDown={this.showMoveMenu}/>
       {this.state.showMoveMenu ? (
       <div className="menu" >
-        <input type="button" name="FavoriteLst" onMouseUp={() => this.moveToList(whiskey.whiskey_id, 1, whiskey.id)} value="Favorite List"/>
-        <input type="button" name="wishLst" onMouseUp={() => this.moveToList(whiskey.whiskey_id, 2,whiskey.id)} value="Wish List"/>
-        <input type="button" name="alreadyTriedLst" onMouseUp={()=> this.moveToList(whiskey.whiskey_id, 3,whiskey.id)} value="Already Tried List"/>
+        <input type="button" name="FavoriteLst" onMouseUp={() => this.moveToList(whiskey.whiskey_id, 1, whiskey.id, 'Favorite List')} value="Favorite List"/>
+        <input type="button" name="wishLst" onMouseUp={() => this.moveToList(whiskey.whiskey_id, 2,whiskey.id, 'Wish List')} value="Wish List"/>
+        <input type="button" name="alreadyTriedLst" onMouseUp={()=> this.moveToList(whiskey.whiskey_id, 3,whiskey.id, 'Already Tried')} value="Already Tried List"/>
       </div>) : ""}
       <input type="button" name="delete" onClick={() =>this.deleteFromList(whiskey.id)}value="remove"/>
-      <input type="button" name="reviewWhiskey" value="Review"/>
     </div>
     )
   }

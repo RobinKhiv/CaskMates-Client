@@ -18,8 +18,8 @@ export default WhiskeyContext;
 export class WhiskeyProvider extends Component {
   state = {
     whiskey: {},
-    error: null,
     reviews: [],
+    error: null,
     isLoggedIn: false
   }
   setError = error => {
@@ -36,9 +36,9 @@ export class WhiskeyProvider extends Component {
   setReviews = reviews => {
     this.setState({ reviews })
   }
-  clearWhiskey = () => {
-    this.setWhiskey( {whiskey: {}})
-  }
+  // clearWhiskey = () => {
+  //   this.setWhiskey( {whiskey: {}})
+  // }
   addReview = review =>{
     this.setReviews({
       ...this.state.reviews, review

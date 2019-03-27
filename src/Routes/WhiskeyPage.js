@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import WhiskeyApiServices from '../Services/whiskey-api-service';
 import WhiskeyContext from '../Context/WhiskeyContext';
+import {Link} from 'react-router-dom';
 
 
 export default class WhiskeyPage extends Component {
@@ -15,18 +16,18 @@ export default class WhiskeyPage extends Component {
     WhiskeyApiServices.getWhiskey(whiskeyId)
       .then(this.context.setWhiskey)
       .catch(this.context.setError)
-    WhiskeyApiServices.getWhiskeyReviews(whiskeyId)
+      WhiskeyApiServices.getWhiskeyReviews(whiskeyId)
       .then(this.context.setReviews)
       .catch(this.context.setError)
- }
- componentWillUnmount() {
-  this.context.clearWhiskey()
-}
+    }
+  
   render() {
     const {whiskey, reviews} = this.context;
     
     // this.context.whiskey.title;
     // ID :{this.props.match.params.whiskeyId}
+    const {whiskeyId} = this.props.match.params;
+    
     return (
     <React.Fragment>
     <section>
@@ -49,7 +50,10 @@ export default class WhiskeyPage extends Component {
     </section>
     <section className="reviews">
       <ul className='WhiskeyPage__review-list'>
+      <Link to={`/whiskeys/${whiskeyId}/addReview`}>
       <input type="button" name="addReview" value="Add Review"/>
+      
+      </Link>
       <div className="review-title"><strong>Reviews</strong></div>
         <WhiskeyReviews reviews={reviews} /> 
       </ul>

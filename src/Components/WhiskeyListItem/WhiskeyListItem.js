@@ -31,11 +31,6 @@ export default class WhiskeyListItem extends Component {
   addToList = (whiskey_Id, list_id) => {
     WhiskeyApiService.addToList(whiskey_Id, list_id)  
   }
-
-  deleteFromList = (list_id) => {
-    WhiskeyApiService.removeWhiskeyFromApi(list_id)
-    .then(() => this.context.removeWhiskeyFromState(list_id))
-  }
  
   render() {
     const {whiskey} = this.props;
@@ -50,12 +45,12 @@ export default class WhiskeyListItem extends Component {
       <input type="button" name="addWhiskey" value="Add" onMouseDown={this.showAddMenu}/>
       {this.state.showAddMenu ? (
       <div className="menu" >
-        <input type="button" name="FavoriteLst" onMouseUp={() => this.addToList(whiskey.whiskey_id, 1)} value="Favorite List"/>
-        <input type="button" name="alreadyTriedLst" onMouseUp={()=> this.addToList(whiskey.whiskey_id, 3)} value="Already Tried List"/>
+        <input type="button" name="FavoriteLst" onMouseUp={() => this.addToList(whiskey.whiskey_id, 1)} value="Favorite List"/><br/>
+        <input type="button" name="alreadyTriedLst" onMouseUp={()=> this.addToList(whiskey.whiskey_id, 3)} value="Already Tried List"/><br/>
         <input type="button" name="wishLst" onMouseUp={() => this.addToList(whiskey.whiskey_id, 2)} value="Wish List"/>
       </div>) : ""}
-      <input type="button" name="delete" onClick={() =>this.deleteFromList(whiskey.id)}value="remove"/>
-      <input type="button" name="reviewWhiskey" value="Review"/>
+      {/* <input type="button" name="delete" onClick={() =>this.deleteFromList(whiskey.id)}value="remove"/> */}
+      {/* <input type="button" name="reviewWhiskey" value="Review"/> */}
     </div>
     )
   }

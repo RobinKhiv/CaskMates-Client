@@ -17,6 +17,9 @@ export default class ListPage extends Component {
    
     return (
       <React.Fragment>
+        <header>
+          
+        </header>
         <section className="favoriteList row">
           <h2>Favorite List</h2>
           {favoriteList.map(whiskey=> <UserListItem key={whiskey.id} whiskey={whiskey}/>)}
