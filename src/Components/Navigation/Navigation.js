@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
-import './header.css';
 import TokenService from '../../Services/token-api-service';
 import WhiskeyContext from '../../Context/WhiskeyContext';
+import './header.css';
 
-export default class Header extends Component {
+export default class Navigation extends Component {
   static contextType = WhiskeyContext;
 
   handleLogoutClick = () => {
@@ -25,35 +25,32 @@ export default class Header extends Component {
   renderLoginLink() {
     return (
         <div className='Header__not-logged-in'>
-          <Link
-            to='/register'>
-            Register
-          </Link>
-          <Link
+          <Link className='nav-a log'
             to='/login'>
             Log in
           </Link>
         </div>
       )
   }
+  renderUserFeaturesLink() {
+    return (
+      <React.Fragment>
+        <Link className='nav-a' to='/whiskeyList'>List</Link>
+        <Link className='nav-a' to='/addWhiskey'>Add Whiskey</Link>
+      </React.Fragment>
+    )
+  }
   
   render() {
     return (
-      <nav role="navigation" className="header">
-          <Link to='/' className="brand">Cask Mates</Link>
-        <div className="navbar-anchors">
-            <ul>
-                <li>
-                  <Link to='/whiskeys'>Whiskey Lookup</Link>
-                </li>
-                <li>
-                  <Link to='/whiskeyList'>List</Link>
-                </li>
-                <li>
-                  <Link to='/addWhiskey'>Add Whiskey</Link>
-                </li>          
-            </ul>
-        </div>
+      <nav role='navigation' className='navigation'>
+        <Link to='/' className='brand'>Cask Mates</Link>
+      <div className='navbar-anchors'>
+        <Link className='nav-a' to='/whiskeys'>Whiskey Lookup</Link>
+        {TokenService.hasAuthToken() 
+        ? this.renderUserFeaturesLink() 
+        : ''}
+      </div>
         {TokenService.hasAuthToken()
           ? this.renderLogoutLink()
           : this.renderLoginLink()}

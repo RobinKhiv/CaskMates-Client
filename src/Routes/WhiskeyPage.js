@@ -3,7 +3,6 @@ import WhiskeyApiServices from '../Services/whiskey-api-service';
 import WhiskeyContext from '../Context/WhiskeyContext';
 import {Link} from 'react-router-dom';
 
-
 export default class WhiskeyPage extends Component {
   static defaultProps ={
       match: {params: {}},
@@ -23,38 +22,36 @@ export default class WhiskeyPage extends Component {
   
   render() {
     const {whiskey, reviews} = this.context;
-    
-    // this.context.whiskey.title;
-    // ID :{this.props.match.params.whiskeyId}
     const {whiskeyId} = this.props.match.params;
     
     return (
     <React.Fragment>
     <section>
-      <h1>{whiskey.whiskeyName}</h1>
-      <h2>Rating: {whiskey.average_review_rating}</h2>
-      <div><strong>Origin:</strong> {whiskey.origin}</div>
-      <div><strong>Abv: </strong> {whiskey.abv === undefined ? 'Not Avaliable' : `${whiskey.abv}%`}</div>
-      <div> <strong>Price: </strong> {whiskey.price === undefined ? 'Not Avaliable' : whiskey.price}</div>
-      <div className="desc"><strong>Description: </strong> 
-      {whiskey.content}
+      <div className='whiskey-content-container row'>
+        <h1>{whiskey.whiskeyName}</h1>
+        <h2>Rating: {whiskey.average_review_rating}</h2>
+        <div><strong>Origin:</strong> {whiskey.origin}</div>
+        <div><strong>Abv: </strong> {whiskey.abv === undefined ? 'Not Avaliable' : `${whiskey.abv}%`}</div>
+        <div> <strong>Price: </strong> {whiskey.price === undefined ? 'Not Avaliable' : whiskey.price}</div>
+        <div className="desc"><strong>Description: </strong> 
+        {whiskey.content}
+        </div>
+        <div className="nose"><strong>NOSE:</strong> 
+        {whiskey.nose}</div>
+        <div className="palate"><strong>PALATE:</strong>
+        {whiskey.palate}</div>
+        <div className="finish"><strong>FINISH:</strong>
+        {whiskey.finish}</div>
+        <input type="button" value="add"/>
+        <div>---------------------</div>
       </div>
-      <div className="nose"><strong>NOSE:</strong> 
-      {whiskey.nose}</div>
-      <div className="palate"><strong>PALATE:</strong>
-      {whiskey.palate}</div>
-      <div className="finish"><strong>FINISH:</strong>
-      {whiskey.finish}</div>
-      <input type="button" value="add"/>
-      <div>---------------------</div>
     </section>
     <section className="reviews">
-      <ul className='WhiskeyPage__review-list'>
       <Link to={`/whiskeys/${whiskeyId}/addReview`}>
-      <input type="button" name="addReview" value="Add Review"/>
-      
+        <input type="button" name="addReview" value="Add Review"/>
       </Link>
       <div className="review-title"><strong>Reviews</strong></div>
+      <ul className='WhiskeyPage__review-list'>
         <WhiskeyReviews reviews={reviews} /> 
       </ul>
     </section>
@@ -65,11 +62,13 @@ export default class WhiskeyPage extends Component {
 
 function WhiskeyReviews({ reviews = [] }) {
   return reviews.map(review =>
-        <li className='review' key={review.id}>
-          <h3>{review.user.user_name}</h3>
-          <div><strong>Rating:</strong> {review.rating} Star</div>
-          <div><strong>Nose:</strong> {review.nose}</div>
-          <div><strong>Tasting:</strong> {review.palate}</div>
-          <div><strong>Additional Comments:</strong> {review.additional_comments}</div>
-        </li>)
+    <li className='review' key={review.id}>
+      <h3>{review.user.user_name}</h3>
+      <div><strong>Rating:</strong> {review.rating} Star</div>
+      <div><strong>Nose:</strong> {review.nose}</div>
+      <div><strong>Tasting:</strong> {review.palate}</div>
+      <div><strong>Finish:</strong> {review.finish}</div>
+      <div><strong>Additional Comments:</strong> {review.additional_comments}</div>
+    </li>
+  )
 }

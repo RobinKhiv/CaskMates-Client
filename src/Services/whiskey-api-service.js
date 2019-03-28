@@ -1,6 +1,5 @@
-import config from '../config'
-import TokenService from './token-api-service'
-
+import config from '../config';
+import TokenService from './token-api-service';
 
 const WhiskeyApiService = {
   getWhiskeys() {
@@ -23,26 +22,8 @@ const WhiskeyApiService = {
           : res.json().then(res => Promise.resolve(res))
       )
   },
-  moveToList(whiskey_id, list_id, currentListId){
-    return fetch(`${config.API_ENDPOINT}/lists/${currentListId}`, {
-      method: 'PATCH',
-      headers: {
-        'content-type': 'application/json',
-        'authorization': `bearer ${TokenService.getAuthToken()}`
-      },
-      body: JSON.stringify({
-        whiskey_id,
-        list_id
-      })
-    }) 
-    // .then(res =>
-    //   (!res.ok)
-    //     ? res.json().then(e => Promise.reject(e))
-    //     : res.json()
-    // )
-  },
-  getWhiskeyReviews(whiskeyId) {
-    return fetch(`${config.API_ENDPOINT}/whiskeys/${whiskeyId}/reviews`, {
+  getWhiskeyList(){
+    return fetch(`${config.API_ENDPOINT}/lists`, {
       headers: {
         'authorization': `bearer ${TokenService.getAuthToken()}`
       },
@@ -53,16 +34,8 @@ const WhiskeyApiService = {
           : res.json()
       )
   },
-  removeWhiskeyFromApi(list_id){
-    return fetch(`${config.API_ENDPOINT}/lists/${list_id}`, {
-      method: 'DELETE',
-      headers: {
-        'authorization': `bearer ${TokenService.getAuthToken()}`
-      }
-    })
-  },
-  getWhiskeyList(){
-    return fetch(`${config.API_ENDPOINT}/lists`, {
+  getWhiskeyReviews(whiskeyId) {
+    return fetch(`${config.API_ENDPOINT}/reviews/${whiskeyId}`, {
       headers: {
         'authorization': `bearer ${TokenService.getAuthToken()}`
       },
@@ -90,6 +63,27 @@ const WhiskeyApiService = {
       ? res.json().then(e => Promise.reject(e))
       : res.json()
     )
+  },
+  moveToList(whiskey_id, list_id, currentListId){
+    return fetch(`${config.API_ENDPOINT}/lists/${currentListId}`, {
+      method: 'PATCH',
+      headers: {
+        'content-type': 'application/json',
+        'authorization': `bearer ${TokenService.getAuthToken()}`
+      },
+      body: JSON.stringify({
+        whiskey_id,
+        list_id
+      })
+    }) 
+  },
+  removeWhiskeyFromApi(list_id){
+    return fetch(`${config.API_ENDPOINT}/lists/${list_id}`, {
+      method: 'DELETE',
+      headers: {
+        'authorization': `bearer ${TokenService.getAuthToken()}`
+      }
+    })
   },
   postReview(whiskey_id, rating, nose, palate,finish, additional_comments) {
     return fetch(`${config.API_ENDPOINT}/reviews/${whiskey_id}`, {
@@ -135,7 +129,8 @@ const WhiskeyApiService = {
         (!res.ok)
           ? res.json().then(e => Promise.reject(e))
           : res.json()
-      )}
+      )
+  }
 }
 
 export default WhiskeyApiService

@@ -3,15 +3,13 @@ import WhiskeyForm from '../Components/WhiskeyForm/WhiskeyForm'
 
 export default class AddWhiskeyPage extends Component {
   handleAddWhiskeySuccess = (whiskeyId) => {
-    const { location, history } = this.props
-    const destination = (location.state || {}).from || '/'
-    history.push(`/whiskeys/${whiskeyId}`)
+    this.props.history.push(`/whiskeys/${whiskeyId}`)
   }
   render() {
     return (
-      <React.Fragment>
+      <section className='new-whiskey-form container row'>
         <WhiskeyForm onAddSuccess={this.handleAddWhiskeySuccess}/>
-      </React.Fragment>
+      </section>
     )
   }
 }

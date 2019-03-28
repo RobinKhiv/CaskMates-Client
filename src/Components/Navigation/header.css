@@ -1,9 +1,9 @@
 *{ 
     box-sizing: border-box;
   }
-li{
+/* li{
     list-style: none;
-}
+} */
 nav *{
     display:inline-block;
   }
@@ -17,7 +17,7 @@ nav{
     right: 0;
     height: 35px;
 }
-li a, .brand{
+.nav-a, .brand{
     font-size: 13px;
     font-weight: 400;
     color: #3E2400;
@@ -33,7 +33,7 @@ li a, .brand{
   /* ul {
     padding-left: 0;
   } */
-  nav a {
+  .nav-a {
     margin: 5px;
     margin-left: 10px;
   }

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import AuthApiService from '../../Services/auth-api-service';
 import TokenService from '../../Services/token-api-service';
+import './LoginForm.css';
 
 export default class LoginForm extends Component {
   static defaultProps = {
@@ -32,20 +34,22 @@ export default class LoginForm extends Component {
   render() {
     const {error} = this.state;
     return (
-      <form className='loginForm' onSubmit={this.handleSubmitJwtAuth}>
+      <form className='loginForm row' onSubmit={this.handleSubmitJwtAuth}>
         <div role='alert'>
-        {error && <p className='red'>{error}</p>}
+          {error && <p className='red'>{error}</p>}
         </div>
-        <div className='userName'>
+        <div className='userName-container'>
           <label htmlFor='user_name'>User Name</label><br/>
           <input type='text' name='user_name' className='login-username'/>
         </div>
-        <div>
+        <div className='password-container'>
           <label htmlFor='password'>Password</label><br/>
           <input type='text' name='password' className='loginFormPassword'/>
         </div>
         <input type='submit' name='submit' className='loginSubmit'/>
-        <input type='button' name='cancel' className='cancel-bt' value='cancel'/>
+        <Link to={'/register'}>
+          <input type='button' name='cancel' className='cancel-bt' value='Register'/>
+        </Link>
       </form>
     )
   }

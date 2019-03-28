@@ -13,8 +13,6 @@ export default class LoginPage extends Component {
   static contextType = WhiskeyContext;
 
   handleLoginSuccess = () => {
-    const { location, history } = this.props
-    const destination = (location.state || {}).from || '/'
     this.context.userLogin();
     this.props.history.push('/whiskeys')
   }

@@ -1,0 +1,16 @@
+{
+    "version": 2,
+    "alias": "robinkhiv-caskmate-app",
+    "name": "whiskey-app",
+    "routes": [
+        {
+          "src": "^/static/(.*)",
+          "dest": "/static/$1"
+        },
+        {
+          "src": ".*",
+          "dest": "/index.html"
+        }
+    ]
+  }
+  

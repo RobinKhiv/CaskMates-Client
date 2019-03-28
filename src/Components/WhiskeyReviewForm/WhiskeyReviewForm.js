@@ -1,11 +1,15 @@
 import React, { Component } from 'react'
-import WhiskeyContext from '../../Context/WhiskeyContext';
 import {Link} from 'react-router-dom'
+import WhiskeyContext from '../../Context/WhiskeyContext';
 import WhiskeyApiService from '../../Services/whiskey-api-service';
+import './WhiskeyReviewForm.css';
 
 export default class WhiskeyReviewForm extends Component {
+  static defaultProps = {
+    onCreatedReviewSuccess: () => {}
+  }
+  static contextType = WhiskeyContext;
 
-  static contextType = WhiskeyContext
   handleSubmit = (e) =>{
     e.preventDefault();
     const whiskeyId = this.context.whiskey.id;
@@ -18,13 +22,12 @@ export default class WhiskeyReviewForm extends Component {
     .then((res) => this.props.onCreatedReviewSuccess(whiskeyId)
     )
     .catch(res => {
-    this.setState({ error: res.error })
-    });
-    
+      this.context.setError(res.error)
+    }); 
   }
   render() {
     const {whiskey}= this.context;
-   
+    const {error} = this.context;
     return (
       <form className="whiskeyReviewForm" onSubmit={this.handleSubmit}>
         <h2>Review for {whiskey.whiskeyName} </h2>
@@ -46,8 +49,11 @@ export default class WhiskeyReviewForm extends Component {
         <input type="text" name='additional_comments'/><br/>
         <input type="submit" name="submit" value="submit"/>
         <Link to={`/whiskeys/${whiskey.id}`}>
-        <input type='button' name='cancel-review-btn' value='cancel'/>
+          <input type='button' name='cancel-review-btn' value='cancel'/>
         </Link>
+        <div role="alert">
+          {error && <p className="red">{error}</p>}
+        </div>
       </form>
     )
   }

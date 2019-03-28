@@ -1,24 +1,28 @@
 import React, { Component } from 'react'
 import whiskeysService from '../../Services/whiskey-api-service';
+import './WhiskeyForm.css'
 
 export default class WhiskeyForm extends Component {
-  onSubmit = e =>{
+  onSubmit = e => {
       e.preventDefault();
       const {drinkName, drinkImage, origin, abv, price, content, nose, palate, finish} = e.target;
-      whiskeysService.postWhiskey(drinkName.value, drinkImage.value, origin.value, parseFloat(abv.value), parseFloat(price.value), content.value, nose.value, palate.value, finish.value)
+      whiskeysService.postWhiskey(
+        drinkName.value, 
+        drinkImage.value, 
+        origin.value, 
+        parseFloat(abv.value), 
+        parseFloat(price.value), 
+        content.value, 
+        nose.value, 
+        palate.value, 
+        finish.value)
       .then(whiskeyId => this.props.onAddSuccess(whiskeyId))
-    
-      // .then(this.context.addReview)
-      // .then(() => {
-      //   text.value = ''
-      // })
-      // .catch(this.context.setError)
- }
+  }
   
   render() {
 
     return (
-      <form onSubmit={this.onSubmit}>
+      <form onSubmit={this.onSubmit} className="newWhiskey-form">
         <h1>Add a Drink</h1>
         <label htmlFor="drinkName">Drink: </label>
         <input type="text" name="drinkName" id="drinkname"/><br/>

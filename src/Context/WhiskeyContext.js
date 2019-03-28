@@ -36,9 +36,6 @@ export class WhiskeyProvider extends Component {
   setReviews = reviews => {
     this.setState({ reviews })
   }
-  // clearWhiskey = () => {
-  //   this.setWhiskey( {whiskey: {}})
-  // }
   addReview = review =>{
     this.setReviews({
       ...this.state.reviews, review
