@@ -22,10 +22,10 @@ export default class WhiskeyForm extends Component {
   render() {
 
     return (
-      <form onSubmit={this.onSubmit} className="newWhiskey-form">
-        <h1>Add a Drink</h1>
+      <form onSubmit={this.onSubmit} className="newWhiskey-form col-6">
+        <h1 className="whiskeyFormTitle">Add a Drink</h1>
         <label htmlFor="drinkName">Drink: </label>
-        <input type="text" name="drinkName" id="drinkname"/><br/>
+        <input type="text" name="drinkName" id="drinkname"className='wide'/><br/>
         <label htmlFor='drinkImage'>Image Link: </label>
         <input type="text" name="drinkImage" id="drinkImage"/><br/>
         <label htmlFor="origin">Origin: </label>

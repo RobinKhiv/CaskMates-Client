@@ -1,0 +1,18 @@
+.loginForm{
+    border: 1px solid black;
+    text-align: center;
+    width: max-content;
+    margin-top: 50px;
+    border-radius: 3px; 
+}
+.loginFormPassword, .login-username{
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.loginSubmit{
+    margin-right: 5px;
+}
+.loginSubmit, .cancel-btn {
+    margin-top: 5px;
+    margin-bottom: 6px; 
+}

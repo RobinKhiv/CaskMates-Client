@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 import TokenService from '../../Services/token-api-service';
 import WhiskeyContext from '../../Context/WhiskeyContext';
-import './header.css';
+import './Navigation.css';
 
 export default class Navigation extends Component {
   static contextType = WhiskeyContext;
@@ -15,8 +15,9 @@ export default class Navigation extends Component {
   renderLogoutLink() {
     return (
       <div className='Header__logged-in'>
-        <Link onClick={this.handleLogoutClick} to='/'>
-          Logout
+        <Link className='nav-a logout' onClick={this.handleLogoutClick} to='/'>
+  
+          <img alt='logout icon' height='14' src='https://cdn2.iconfinder.com/data/icons/picons-essentials/57/logout-512.png'/>
         </Link>
       </div>
     )
@@ -26,8 +27,7 @@ export default class Navigation extends Component {
     return (
         <div className='Header__not-logged-in'>
           <Link className='nav-a log'
-            to='/login'>
-            Log in
+            to='/login'><img alt="login icon" src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrdZKzkouFPEorhZMdksNlgtVyANA_0YJl1NYGqlpaELG4TslJig' height='14'></img>
           </Link>
         </div>
       )
@@ -35,8 +35,10 @@ export default class Navigation extends Component {
   renderUserFeaturesLink() {
     return (
       <React.Fragment>
-        <Link className='nav-a' to='/whiskeyList'>List</Link>
         <Link className='nav-a' to='/addWhiskey'>Add Whiskey</Link>
+        <span>|</span>
+        <Link className='nav-a' to='/whiskeyList'>My List</Link>
+        <span>|</span>
       </React.Fragment>
     )
   }
@@ -47,13 +49,14 @@ export default class Navigation extends Component {
         <Link to='/' className='brand'>Cask Mates</Link>
       <div className='navbar-anchors'>
         <Link className='nav-a' to='/whiskeys'>Whiskey Lookup</Link>
+        <span>|</span>
         {TokenService.hasAuthToken() 
         ? this.renderUserFeaturesLink() 
         : ''}
-      </div>
-        {TokenService.hasAuthToken()
+         {TokenService.hasAuthToken()
           ? this.renderLogoutLink()
           : this.renderLoginLink()}
+      </div> 
       </nav>
     )
   }

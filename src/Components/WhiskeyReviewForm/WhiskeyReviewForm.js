@@ -13,11 +13,11 @@ export default class WhiskeyReviewForm extends Component {
   handleSubmit = (e) =>{
     e.preventDefault();
     const whiskeyId = this.context.whiskey.id;
-    const {rating, nose, palate, finish, additional_comments} = e.target;
+    const {rating, tasting} = e.target;
+    console.log(rating.value, tasting.value);
     WhiskeyApiService.postReview(
-      whiskeyId, rating.value, 
-      nose.value, palate.value, 
-      finish.value, additional_comments.value 
+      whiskeyId, parseInt(rating.value), 
+      {tasting: tasting.value}
     )
     .then((res) => this.props.onCreatedReviewSuccess(whiskeyId)
     )
@@ -39,14 +39,8 @@ export default class WhiskeyReviewForm extends Component {
             <option value='4'>4</option>
             <option value='5'>5</option>
         </select><br/>
-        <label htmlFor='nose'>Nose: </label>
-        <input type="text" name='nose'/><br/>
-        <label htmlFor="palate">Palate: </label>
-        <input type="text" name='palate'/><br/>
-        <label htmlFor='finish'>Finish: </label>
-        <input type="text" name='finish'/><br/>
-        <label htmlFor='additional_comments'>Additional Comments: </label>
-        <input type="text" name='additional_comments'/><br/>
+        <label htmlFor='tasting'>Tasting: </label>
+        <input type="text" name='tasting'/><br/>
         <input type="submit" name="submit" value="submit"/>
         <Link to={`/whiskeys/${whiskey.id}`}>
           <input type='button' name='cancel-review-btn' value='cancel'/>

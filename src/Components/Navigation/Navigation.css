@@ -7,38 +7,47 @@
 nav *{
     display:inline-block;
   }
+.Header{
+  height: 4px;
+}
 nav{
     margin-left: auto;
     margin-right: auto;
-    background-color: #c9c9c9;
+    background-color: rgb(94, 65, 54);
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    height: 35px;
+    height: 24px;
 }
 .nav-a, .brand{
-    font-size: 13px;
+  font-size: 13px;
     font-weight: 400;
-    color: #3E2400;
+    color: #aaaaaa;
     font-family: 'Oswald', sans-serif;
     font-weight: 600;
     text-decoration: none;
     letter-spacing: 1px;
     font-weight: 700;
+    
+    
     /* transform: scaleX(1.4); */
     /* transform-origin: 0 0; */
-    padding-left: 10px;
+    padding-left: 2px;
+  }
+  img{
+    mix-blend-mode: multiply;
   }
   /* ul {
     padding-left: 0;
   } */
   .nav-a {
     margin: 5px;
-    margin-left: 10px;
+    margin-left: 5px;
   }
   .navbar-anchors{ 
+    float: right;
     text-decoration: none;
     /* position: absolute; */
-    right: 15px;
+    margin-right: 5px;
   }

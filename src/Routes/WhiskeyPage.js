@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import WhiskeyApiServices from '../Services/whiskey-api-service';
 import WhiskeyContext from '../Context/WhiskeyContext';
 import {Link} from 'react-router-dom';
+import './WhiskeyPage.css';
+import CheckedStar from '../Components/StarRatings/CheckedStar'
 
 export default class WhiskeyPage extends Component {
   static defaultProps ={
@@ -26,9 +28,10 @@ export default class WhiskeyPage extends Component {
     
     return (
     <React.Fragment>
-    <section>
-      <div className='whiskey-content-container row'>
-        <h1>{whiskey.whiskeyName}</h1>
+    <section className="whiskey-content-container row">
+      <div className='whiskeyContent col-6'>
+        <h1 className='whiskeyPageTitle'>{whiskey.whiskeyName}</h1>
+        <img src={whiskey.image} alt="picture of whiskey" className='whiskey-image col-3'></img>
         <h2>Rating: {whiskey.average_review_rating}</h2>
         <div><strong>Origin:</strong> {whiskey.origin}</div>
         <div><strong>Abv: </strong> {whiskey.abv === undefined ? 'Not Avaliable' : `${whiskey.abv}%`}</div>
@@ -46,7 +49,8 @@ export default class WhiskeyPage extends Component {
         <div>---------------------</div>
       </div>
     </section>
-    <section className="reviews">
+    <section className="reviews row">
+      <div className='review-container col-6'>
       <Link to={`/whiskeys/${whiskeyId}/addReview`}>
         <input type="button" name="addReview" value="Add Review"/>
       </Link>
@@ -54,6 +58,7 @@ export default class WhiskeyPage extends Component {
       <ul className='WhiskeyPage__review-list'>
         <WhiskeyReviews reviews={reviews} /> 
       </ul>
+      </div>
     </section>
     </React.Fragment>  
     )
@@ -61,14 +66,21 @@ export default class WhiskeyPage extends Component {
 }
 
 function WhiskeyReviews({ reviews = [] }) {
+  const generateRatingStars = function (value) {
+    const checkedStar = [];
+    for(let i = 0; i <= value; i++){
+        checkedStar.push('star');
+    }
+     return <CheckedStar checkedStar={checkedStar}/> 
+   };
+
   return reviews.map(review =>
     <li className='review' key={review.id}>
-      <h3>{review.user.user_name}</h3>
-      <div><strong>Rating:</strong> {review.rating} Star</div>
-      <div><strong>Nose:</strong> {review.nose}</div>
-      <div><strong>Tasting:</strong> {review.palate}</div>
-      <div><strong>Finish:</strong> {review.finish}</div>
-      <div><strong>Additional Comments:</strong> {review.additional_comments}</div>
+      <h3 className="userName-container">{review.user.user_name}</h3>
+      <div className="userReview-container">
+        <div className="userRating"><strong>Rating:</strong> {generateRatingStars(review.rating)}</div>
+        <div className="userTasting"><strong>Tasting:</strong> {review.tasting}</div>
+      </div>
     </li>
   )
 }

@@ -32,7 +32,7 @@ export default class Registration extends Component {
   render() {
     const {error} = this.state
     return (
-      <form className="registration-form-container row" onSubmit={this.handleRegistrationSubmit}>
+      <form className="registration-form col-3" onSubmit={this.handleRegistrationSubmit}>
         <div role="alert">
           {error && <p className="red">{error}</p>}
         </div>

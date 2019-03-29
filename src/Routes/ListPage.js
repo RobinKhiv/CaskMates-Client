@@ -17,19 +17,16 @@ export default class ListPage extends Component {
    
     return (
       <React.Fragment>
-        <header>
-          
-        </header>
         <section className="favoriteList row">
-          <h2>Favorite List</h2>
+          <h2>Favorite List</h2><br/>
           {favoriteList.map(whiskey=> <UserListItem key={whiskey.id} whiskey={whiskey}/>)}
         </section>
         <section className="wishList row">
-          <h2>Wish List</h2>
+          <h2>Wish List</h2><br/>
           {wishList.map(whiskey=> <UserListItem key={whiskey.id} whiskey={whiskey}/>)}
         </section>
         <section className="alreadyTriedLisT row">
-          <h2>Already Tried List</h2>
+          <h2>Already Tried List</h2><br/>
           {alreadyTried.map(whiskey=> <UserListItem key={whiskey.id} whiskey={whiskey}/>)}
         </section>       
       </React.Fragment>

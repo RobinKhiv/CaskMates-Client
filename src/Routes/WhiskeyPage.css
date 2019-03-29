@@ -1,0 +1,44 @@
+.whiskey-content-container{
+    font-size: 16px;
+    margin-top: 50px;
+}
+.whiskeyPageTitle, .review-title{
+    text-align: center;
+}
+.whiskeyContent, .userReview-container, .loginForm{
+    
+    background-color: rgba(255, 255, 255, 0.575);
+    border-radius: 2px;
+    padding: 10px;
+   margin-bottom: 10px;
+}
+.whiskey-image{
+    float: left;
+    width: 30%;
+    /* width: 482px; */
+}
+
+strong{
+    font-size: 18px;
+}
+strong::after{
+    content: "  ";
+}
+.reviews{
+    margin-top: 550px;
+    position: absolute;
+}
+.userName-container{
+    float:left;
+    list-style: none;
+}
+.WhiskeyPage__review-list{
+    padding-left: 10px;
+}
+.userReview-container{
+    margin-left: 100px;
+}
+.li{
+
+    list-style: none;
+}

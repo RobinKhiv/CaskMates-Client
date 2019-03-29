@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
-// import './WhiskeyListItem.css'
+import './UserListItem.css'
 import WhiskeyApiService from '../../Services/whiskey-api-service';
 import WhiskeyListContext from '../../Context/WhiskeyListContext';
+import CheckedStar from '../StarRatings/CheckedStar'
 
 
 export default class UserListItem extends Component {
@@ -37,17 +38,19 @@ export default class UserListItem extends Component {
     WhiskeyApiService.removeWhiskeyFromApi(list_id)
     .then(() => this.context.removeWhiskeyFromState(list_id))
   }
- 
+
   render() {
     const {whiskey} = this.props;
     return (
-    <div className="col-3 WhiskeyList">
+    <div className="col-3 WhiskeyList"style={{backgroundImage: `url(${whiskey.image})`}}>
+      <div className='listText'>
+
       <Link to={`/whiskeys/${whiskey.whiskey_id}`} className='whiskeyListItem'>
-      <div className="whiskeyListText">
+      <div className="whiskeyListName">
         <h2>{whiskey.whiskeyName}</h2>
-        <p> Rating: {whiskey.average_review_rating} </p>
       </div>
       </Link>
+      </div>
       <input type="button" name="moveWhiskey" value="Move to" onMouseDown={this.showMoveMenu}/>
       {this.state.showMoveMenu ? (
       <div className="menu" >

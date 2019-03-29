@@ -85,7 +85,7 @@ const WhiskeyApiService = {
       }
     })
   },
-  postReview(whiskey_id, rating, nose, palate,finish, additional_comments) {
+  postReview(whiskey_id, rating, tasting) {
     return fetch(`${config.API_ENDPOINT}/reviews/${whiskey_id}`, {
       method: 'POST',
       headers: {
@@ -94,10 +94,7 @@ const WhiskeyApiService = {
       },
       body: JSON.stringify({
         rating,
-        nose,
-        palate,
-        finish,
-        additional_comments
+        tasting
       }),
     })
       .then(res =>
