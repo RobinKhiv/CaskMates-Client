@@ -13,7 +13,7 @@ Password:
 Open [Cask Mates](https://robinkhiv-caskmate-app.now.sh/login) to enjoy a live version of the app
 
 ### `Technologies Used`
-
+HTML, CSS, React, Node, Express, and PostgreSQL
 
 ### `Application Programming Interface`
 CaskMates is directed connected to a stand alone express server that is created specifically for this application.
