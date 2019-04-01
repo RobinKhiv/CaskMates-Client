@@ -20,7 +20,11 @@ nav{
     right: 0;
     height: 24px;
 }
-.nav-a, .brand{
+.listNav{
+  background-color: rgb(94, 65, 54);
+  border: rgb(94, 65, 54);
+}
+.nav-a, .brand, .listNav{
   font-size: 13px;
     font-weight: 400;
     color: #aaaaaa;

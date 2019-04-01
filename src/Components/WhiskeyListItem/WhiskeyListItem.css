@@ -8,6 +8,8 @@
 .listText{
     background-color: rgba(255, 255, 255, 0.575);
     border-radius: 1px;
+    background-size: cover;
+
 }
 .WhiskeyList{
     border: 2px rgb(94, 54, 37) solid;
@@ -31,4 +33,39 @@
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
+}
+.dropdown-add-btn{
+    color: white;
+    width: 45px;
+    padding: 2px;
+    font-size: 11px;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    font-weight: 400;
+    background: rgb(94, 54, 37);
+    border-radius: 0px;
+    -moz-border-radius: 0px;
+    -webkit-border-radius: 20px 20px 20px 20px;
+
+  /* position: relative; */
+  /* z-index:2; */
+}
+.add-selection{
+    color: white;
+    background: #21AA98;
+    padding: 2px;
+    font-size: 11px;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    /* font-weight: 900; */
+    /* margin-bottom: 5px; */
+ 
+    border-radius: 0px;
+    -moz-border-radius: 0px;
+    -webkit-border-radius: 20px 20px 20px 20px;
+}
+.add-selection, .triedLst{
+    margin-bottom: 5px;
 }

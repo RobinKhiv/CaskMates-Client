@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import './UserListItem.css'
 import WhiskeyApiService from '../../Services/whiskey-api-service';
 import WhiskeyListContext from '../../Context/WhiskeyListContext';
-import CheckedStar from '../StarRatings/CheckedStar'
+
 
 
 export default class UserListItem extends Component {
@@ -42,7 +42,7 @@ export default class UserListItem extends Component {
   render() {
     const {whiskey} = this.props;
     return (
-    <div className="col-3 WhiskeyList"style={{backgroundImage: `url(${whiskey.image})`}}>
+    <div className="col-3 WhiskeyList userWhiskeys"style={{backgroundImage: `url(${whiskey.image})`}}>
       <div className='listText'>
 
       <Link to={`/whiskeys/${whiskey.whiskey_id}`} className='whiskeyListItem'>

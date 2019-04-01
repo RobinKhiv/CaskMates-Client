@@ -30,8 +30,8 @@ export default class WhiskeyPage extends Component {
     <React.Fragment>
     <section className="whiskey-content-container row">
       <div className='whiskeyContent col-6'>
-        <h1 className='whiskeyPageTitle'>{whiskey.whiskeyName}</h1>
-        <img src={whiskey.image} alt="picture of whiskey" className='whiskey-image col-3'></img>
+        <h1 className='whiskeyPageTitle'>{whiskey.whiskey_name}</h1>
+        <img src={whiskey.image} alt="whiskey" className='whiskey-img col-3'></img>
         <h2>Rating: {whiskey.average_review_rating}</h2>
         <div><strong>Origin:</strong> {whiskey.origin}</div>
         <div><strong>Abv: </strong> {whiskey.abv === undefined ? 'Not Avaliable' : `${whiskey.abv}%`}</div>

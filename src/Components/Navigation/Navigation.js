@@ -16,7 +16,6 @@ export default class Navigation extends Component {
     return (
       <div className='Header__logged-in'>
         <Link className='nav-a logout' onClick={this.handleLogoutClick} to='/'>
-  
           <img alt='logout icon' height='14' src='https://cdn2.iconfinder.com/data/icons/picons-essentials/57/logout-512.png'/>
         </Link>
       </div>
