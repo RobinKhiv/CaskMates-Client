@@ -4,7 +4,8 @@ Cask Mates is interactive application where you can browse through a dataset of 
 
 
 ## `How to Use`
-
+<img src="./Images/Caskmates-list.png"
+     alt="user list" />
 ## `Demo User`
 Feel free to login with 
 User: 
