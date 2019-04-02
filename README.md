@@ -2,9 +2,9 @@
 # Cask Mates Client
 Cask Mates is interactive application where you can browse through a dataset of whiskeys and select specific whiskeys that tailor to your specific taste palates. Once you are able to find a whiskey that appeal to your taste buds you can add them to a choice of three list that can by your Favorites, Wish or Already Tried list.
 
-<img src="./Images/Caskmates-search-add.png" alt="search page" width='300px'/>
-<img src="./Images/Caskmates-specific-whiskey.png" alt="whiskey page" width='300px'/>
-<img src="./Images/Caskmates-list.png" alt="user list" width='300px'/>
+<img src="./Images/Caskmates-search-add.png" alt="search page" width='100px'/><br/>
+<img src="./Images/Caskmates-specific-whiskey.png" alt="whiskey page" width='100px'/><br/>
+<img src="./Images/Caskmates-list.png" alt="user list" width='100px'/>
 
 ### `Demo User`
 Feel free to login with 
