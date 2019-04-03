@@ -27,7 +27,7 @@ export default class WhiskeyPage extends Component {
     const {whiskeyId} = this.props.match.params;
     
     return (
-    <React.Fragment>
+   <React.Fragment >
     <section className="whiskey-content-container row">
       <div className='whiskeyContent col-6'>
         <h1 className='whiskeyPageTitle'>{whiskey.whiskey_name}</h1>
@@ -60,8 +60,8 @@ export default class WhiskeyPage extends Component {
       </ul>
       </div>
     </section>
-    </React.Fragment>  
-    )
+  </React.Fragment>
+  )
   }
 }
 
