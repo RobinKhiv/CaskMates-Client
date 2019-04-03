@@ -31,6 +31,7 @@ export default class Navigation extends Component {
         </div>
       )
   }
+
   renderUserFeaturesLink() {
     return (
       <React.Fragment>
@@ -45,17 +46,17 @@ export default class Navigation extends Component {
   render() {
     return (
       <nav role='navigation' className='navigation'>
-        <Link to='/' className='brand'>Cask Mates</Link>
-      <div className='navbar-anchors'>
-        <Link className='nav-a' to='/whiskeys'>Whiskey Lookup</Link>
-        <span>|</span>
-        {TokenService.hasAuthToken() 
-        ? this.renderUserFeaturesLink() 
-        : ''}
-         {TokenService.hasAuthToken()
+        <Link to='/' className='brand'>Caskmates</Link>
+        <div className='navbar-anchors'>
+          <Link className='nav-a' to='/whiskeys'>Whiskey Lookup</Link>
+          <span>|</span>
+          {TokenService.hasAuthToken() 
+          ? this.renderUserFeaturesLink() 
+          : ''}
+          {TokenService.hasAuthToken()
           ? this.renderLogoutLink()
           : this.renderLoginLink()}
-      </div> 
+        </div> 
       </nav>
     )
   }

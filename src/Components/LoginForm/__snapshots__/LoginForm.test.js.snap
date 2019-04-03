@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<LoginForm /> renders without crashing 1`] = `
+<form
+  className="loginForm col-3"
+  onSubmit={[Function]}
+>
+  <h2>
+    Login
+  </h2>
+  <div
+    className="userName-container"
+  >
+    <label
+      htmlFor="user_name"
+    >
+      User Name
+    </label>
+    <br />
+    <input
+      className="login-username"
+      name="user_name"
+      placeholder="demouser"
+      type="text"
+    />
+    <br />
+  </div>
+  <div
+    className="password-container"
+  >
+    <label
+      htmlFor="password"
+    >
+      Password
+    </label>
+    <br />
+    <input
+      className="loginFormPassword"
+      name="password"
+      placeholder="password"
+      type="password"
+    />
+    <br />
+  </div>
+  <input
+    className="loginSubmit"
+    name="submit"
+    type="submit"
+    value="Log In"
+  />
+  <a
+    href="/register"
+    onClick={[Function]}
+  >
+    <input
+      className="cancel-bt"
+      name="cancel"
+      type="button"
+      value="Register"
+    />
+  </a>
+  <div
+    role="alert row"
+  />
+</form>
+`;

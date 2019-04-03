@@ -1,0 +1,125 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<WhiskeyForm /> renders without crashing 1`] = `
+<form
+  className="newWhiskey-form col-6"
+  onSubmit={[Function]}
+>
+  <h1
+    className="whiskeyFormTitle"
+  >
+    Add a Drink
+  </h1>
+  <label
+    htmlFor="drinkName"
+  >
+    Drink: 
+  </label>
+  <input
+    className="wide"
+    id="drinkname"
+    name="drinkName"
+    type="text"
+  />
+  <br />
+  <label
+    htmlFor="drinkImage"
+  >
+    Image Link: 
+  </label>
+  <input
+    id="drinkImage"
+    name="drinkImage"
+    type="text"
+  />
+  <br />
+  <label
+    htmlFor="origin"
+  >
+    Origin: 
+  </label>
+  <input
+    id="origin"
+    name="origin"
+    type="text"
+  />
+  <br />
+  <label
+    htmlFor="abv"
+  >
+    Abv: 
+  </label>
+  <input
+    id="abv"
+    name="abv"
+    type="text"
+  />
+  <br />
+  <label
+    htmlFor="price"
+  >
+    Price: 
+  </label>
+  <input
+    id="price"
+    name="price"
+    type="text"
+  />
+  <br />
+  <label
+    htmlFor="content"
+  >
+    Description: 
+  </label>
+  <input
+    id="content"
+    name="content"
+    type="text"
+  />
+  <br />
+  <label
+    htmlFor="nose"
+  >
+    Nose: 
+  </label>
+  <input
+    id="nose"
+    name="nose"
+    type="text"
+  />
+  <br />
+  <label
+    htmlFor="palate"
+  >
+    Palate: 
+  </label>
+  <input
+    id="palate"
+    name="palate"
+    type="text"
+  />
+  <br />
+  <label
+    htmlFor="finish"
+  >
+    Finish: 
+  </label>
+  <input
+    id="finish"
+    name="finish"
+    type="text"
+  />
+  <br />
+  <input
+    id="submit-btn"
+    name="submit"
+    type="submit"
+    value="submit"
+  />
+  <input
+    id="cancel-btn"
+    type="button"
+    value="Cancel"
+  />
+</form>
+`;

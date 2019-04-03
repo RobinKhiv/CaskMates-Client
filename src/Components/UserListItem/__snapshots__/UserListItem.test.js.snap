@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<UserListItem /> renders without crashing 1`] = `
+<div
+  className="col-3 WhiskeyList userWhiskeys"
+  style={
+    Object {
+      "backgroundImage": "url(https)",
+    }
+  }
+>
+  <div
+    className="listText"
+  >
+    <a
+      className="whiskeyListItem"
+      href="/whiskeys/1"
+      onClick={[Function]}
+    >
+      <div
+        className="whiskeyListName"
+      >
+        <h2>
+          name
+        </h2>
+      </div>
+    </a>
+  </div>
+  <input
+    name="moveWhiskey"
+    onMouseDown={[Function]}
+    type="button"
+    value="Move to"
+  />
+  
+  <input
+    name="delete"
+    onClick={[Function]}
+    type="button"
+    value="remove"
+  />
+</div>
+`;

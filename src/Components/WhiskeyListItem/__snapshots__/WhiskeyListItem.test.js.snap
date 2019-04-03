@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<WhiskeyListItem /> renders without crashing 1`] = `
+<div
+  className="col-3 WhiskeyList"
+  style={
+    Object {
+      "backgroundImage": "url(https)",
+    }
+  }
+>
+  <div
+    className="listText"
+  >
+    <a
+      className="whiskeyListItem"
+      href="/whiskeys/1"
+      onClick={[Function]}
+    >
+      <div
+        className="whiskeyListText"
+      >
+        <h2
+          className="whiskeyListName"
+        >
+          name
+        </h2>
+        <p
+          className="ratingText"
+        >
+           Rating: 
+           
+        </p>
+      </div>
+    </a>
+  </div>
+  <div
+    className="dropdown-add"
+  >
+    
+    
+  </div>
+</div>
+`;

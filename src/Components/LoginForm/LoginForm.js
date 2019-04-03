@@ -38,11 +38,11 @@ export default class LoginForm extends Component {
         <h2>Login</h2>
         <div className='userName-container'>
           <label htmlFor='user_name'>User Name</label><br/>
-          <input type='text' name='user_name' className='login-username'/><br/>
+          <input type='text' name='user_name' className='login-username' placeholder='demouser'/><br/>
         </div>
         <div className='password-container'>
           <label htmlFor='password'>Password</label><br/>
-          <input type='password' name='password' className='loginFormPassword'/><br/>
+          <input type='password' name='password' className='loginFormPassword' placeholder='password'/><br/>
         </div>
         <input type='submit' name='submit' value='Log In' className='loginSubmit'/>
         <Link to={'/register'}>

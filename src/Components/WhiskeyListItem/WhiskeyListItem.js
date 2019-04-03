@@ -4,6 +4,7 @@ import './WhiskeyListItem.css'
 import WhiskeyApiService from '../../Services/whiskey-api-service';
 import WhiskeyListContext from '../../Context/WhiskeyListContext';
 import CheckedStar from '../StarRatings/CheckedStar';
+import TokenService from '../../Services/token-api-service';
 
 
 export default class WhiskeyListItem extends Component {
@@ -29,21 +30,24 @@ export default class WhiskeyListItem extends Component {
     })
   }
 
+  addButton = () =>{
+    return (
+    <input type="button" className="dropdown-add-btn" name="addWhiskey" value="Add" onClick={this.showAddMenu}/>
+    )
+  }
+
   addToList = (whiskey_Id, list_id) => {
     WhiskeyApiService.addToList(whiskey_Id, list_id)  
   }
-  backgroundImage = (whiskeyImage) => {
-    return  `background-image: URL("${whiskeyImage}")`
-  }
+
   generateRatingStars= (value)=> {
      const checkedStar = [];
-     if(value >= 1){
-       for(let i = 0; i <= value; i++){
+     if(value >= 1)
+       for(let i = 0; i <= value; i++)
          checkedStar.push('star');
-        }
-      }
-      return <CheckedStar checkedStar={checkedStar}/> 
-    }
+     return <CheckedStar checkedStar={checkedStar}/> 
+  }
+
   render() {
     const {whiskey} = this.props;
     return (
@@ -57,7 +61,7 @@ export default class WhiskeyListItem extends Component {
       </Link>
       </div>
       <div className='dropdown-add'>
-        <input type="button" className="dropdown-add-btn" name="addWhiskey" value="Add" onClick={this.showAddMenu}/>
+        {TokenService.hasAuthToken() ? this.addButton(): ''}
       {this.state.showAddMenu ? (
         <div className="dropdown-content" >
         <input type="button" name="FavoriteLst" className='add-selection' onClick={() => this.addToList(whiskey.whiskey_id, 1)} value="Favorite List"/><br/>

@@ -4,8 +4,6 @@ import './UserListItem.css'
 import WhiskeyApiService from '../../Services/whiskey-api-service';
 import WhiskeyListContext from '../../Context/WhiskeyListContext';
 
-
-
 export default class UserListItem extends Component {
   constructor(){
     super();
@@ -44,7 +42,6 @@ export default class UserListItem extends Component {
     return (
     <div className="col-3 WhiskeyList userWhiskeys"style={{backgroundImage: `url(${whiskey.image})`}}>
       <div className='listText'>
-
       <Link to={`/whiskeys/${whiskey.whiskey_id}`} className='whiskeyListItem'>
       <div className="whiskeyListName">
         <h2>{whiskey.whiskeyName}</h2>

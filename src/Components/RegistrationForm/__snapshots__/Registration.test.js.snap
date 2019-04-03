@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Registration /> renders without crashing 1`] = `
+<form
+  className="registration-form col-3"
+  onSubmit={[Function]}
+>
+  <div
+    role="alert"
+  />
+  <h2>
+    Register
+  </h2>
+  <label
+    htmlFor="user_name"
+  >
+    Username : 
+  </label>
+  <input
+    className="user_name"
+    name="user_name"
+    required={true}
+    type="text"
+  />
+  <br />
+  <label
+    htmlFor="full_name"
+  >
+    Full Name : 
+  </label>
+  <input
+    className="full_name"
+    name="full_name"
+    required={true}
+    type="text"
+  />
+  <br />
+  <label
+    htmlFor="nickname"
+  >
+    Nickname : 
+  </label>
+  <input
+    className="nickname"
+    name="nickname"
+    type="text"
+  />
+  <br />
+  <label
+    htmlFor="password"
+  >
+    password : 
+  </label>
+  <input
+    className="password"
+    name="password"
+    required={true}
+    type="text"
+  />
+  <br />
+  <input
+    name="submit"
+    type="submit"
+    value="Register"
+  />
+</form>
+`;

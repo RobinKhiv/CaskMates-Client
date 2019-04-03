@@ -1,0 +1,83 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<App /> renders without crashing 1`] = `
+Array [
+  <nav
+    className="navigation"
+    role="navigation"
+  >
+    <a
+      className="brand"
+      href="/"
+      onClick={[Function]}
+    >
+      Caskmates
+    </a>
+    <div
+      className="navbar-anchors"
+    >
+      <a
+        className="nav-a"
+        href="/whiskeys"
+        onClick={[Function]}
+      >
+        Whiskey Lookup
+      </a>
+      <span>
+        |
+      </span>
+      
+      <div
+        className="Header__not-logged-in"
+      >
+        <a
+          className="nav-a log"
+          href="/login"
+          onClick={[Function]}
+        >
+          <img
+            alt="login icon"
+            height="14"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrdZKzkouFPEorhZMdksNlgtVyANA_0YJl1NYGqlpaELG4TslJig"
+          />
+        </a>
+      </div>
+    </div>
+  </nav>,
+  <main
+    role="main"
+  >
+    <section
+      className="row"
+    >
+      <div
+        className="landing-page-container col-6"
+      >
+        <h3
+          className="Logo"
+        >
+          Caskmates
+        </h3>
+        <p
+          className="branding-quote"
+        >
+          For us whiskey isn't just a drink, its a passion!
+        </p>
+        <p>
+           This is your one stop for all the info you'll ever need on whiskey needs. You'll be able to construct your own personalized list with your favorite drink or keep track of new whiskeys you can not wait to try. simply share your expertise so others can see what they are missing out!
+        </p>
+        <a
+          href="/login"
+          onClick={[Function]}
+        >
+          <input
+            name="get-started-btn"
+            type="button"
+            value="Get Started"
+          />
+        </a>
+      </div>
+    </section>
+  </main>,
+]
+`;
