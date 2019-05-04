@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import WhiskeyApiService from '../Services/whiskey-api-service';
 import WhiskeyListContext from '../Context/WhiskeyListContext';
 import UserListItem from '../Components/UserListItem/UserListItem';
-import './ListPage.css'
 
 export default class ListPage extends Component {
   static contextType = WhiskeyListContext;

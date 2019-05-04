@@ -14,48 +14,44 @@ export default class Navigation extends Component {
 
   renderLogoutLink() {
     return (
-      <div className='Header__logged-in'>
-        <Link className='nav-a logout' onClick={this.handleLogoutClick} to='/'>
-          <img alt='logout icon' height='14' src='https://cdn2.iconfinder.com/data/icons/picons-essentials/57/logout-512.png'/>
+      <React.Fragment>
+        <Link className='nav-text' to='/addWhiskey'>Add Whiskey</Link>
+        <Link className='nav-text' to='/whiskeyList'>My List</Link>
+        <Link className='nav-text logout' onClick={this.handleLogoutClick} to='/'>
+          Logout
         </Link>
-      </div>
+      </React.Fragment>
     )
   }
 
   renderLoginLink() {
     return (
-        <div className='Header__not-logged-in'>
-          <Link className='nav-a log'
-            to='/login'><img alt="login icon" src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrdZKzkouFPEorhZMdksNlgtVyANA_0YJl1NYGqlpaELG4TslJig' height='14'></img>
-          </Link>
-        </div>
-      )
-  }
-
-  renderUserFeaturesLink() {
-    return (
-      <React.Fragment>
-        <Link className='nav-a' to='/addWhiskey'>Add Whiskey</Link>
-        <span>|</span>
-        <Link className='nav-a' to='/whiskeyList'>My List</Link>
-        <span>|</span>
-      </React.Fragment>
+      <Link className='nav-text login' to='/login'>
+        Login
+      </Link>
     )
   }
-  
+
+  handleNavToggle (){
+    const navs = document.querySelectorAll('.nav-text-right')
+    navs.forEach(nav => nav.classList.toggle('Navbar-ToggleShow'));
+  }
+
   render() {
+    const checkForUser = TokenService.hasAuthToken();
     return (
-      <nav role='navigation' className='navigation'>
-        <Link to='/' className='brand'>Caskmates</Link>
-        <div className='navbar-anchors'>
-          <Link className='nav-a' to='/whiskeys'>Whiskey Lookup</Link>
-          <span>|</span>
-          {TokenService.hasAuthToken() 
-          ? this.renderUserFeaturesLink() 
-          : ''}
-          {TokenService.hasAuthToken()
+      <nav role='navigation'>
+        <div className="nav-text-left">
+        <Link to='/' className='nav-text brand'>Caskmates</Link>
+        </div>
+        <div className='nav-text-right'>
+          <Link className='nav-text' to='/whiskeys'>Whiskeys</Link>
+          {checkForUser
           ? this.renderLogoutLink()
           : this.renderLoginLink()}
+        </div>
+        <div onClick={this.handleNavToggle} className="Navbar-toggle">
+            <i className="fas fa-bars"></i>
         </div> 
       </nav>
     )
