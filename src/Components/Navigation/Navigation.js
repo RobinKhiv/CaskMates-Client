@@ -26,9 +26,14 @@ export default class Navigation extends Component {
 
   renderLoginLink() {
     return (
-      <Link className='nav-text login' to='/login'>
-        Login
-      </Link>
+      <React.Fragment>
+        <Link className='nav-text' to='/whiskeys'>
+          Whiskeys
+        </Link>
+        <Link className='nav-text login' to='/login'>
+          Login
+        </Link>
+      </React.Fragment>
     )
   }
 
@@ -39,16 +44,16 @@ export default class Navigation extends Component {
 
   render() {
     const checkForUser = TokenService.hasAuthToken();
+    const redirectCheck = checkForUser ? '/whiskeys' : '/';
     return (
       <nav role='navigation'>
         <div className="nav-text-left">
-        <Link to='/' className='nav-text brand'>Caskmates</Link>
+        <Link to={redirectCheck} className='nav-text brand'>Caskmates</Link>
         </div>
         <div className='nav-text-right'>
-          <Link className='nav-text' to='/whiskeys'>Whiskeys</Link>
           {checkForUser
-          ? this.renderLogoutLink()
-          : this.renderLoginLink()}
+            ? this.renderLogoutLink()
+            : this.renderLoginLink()}
         </div>
         <div onClick={this.handleNavToggle} className="Navbar-toggle">
             <i className="fas fa-bars"></i>

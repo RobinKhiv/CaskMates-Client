@@ -1,21 +1,22 @@
 .WhiskeyList{
   border-radius: 2%;
- /* background-position: center; */
- background: linear-gradient(rgba(255,255,255,0.2), rgba(255,255,255,0.2)) center no-repeat;
+  background:  center no-repeat;
   background-size: contain;
   background-color: white;
+  border: 2px #5c2626 solid;
+  margin-right: .5em;
+  margin-bottom: 10px;
+  margin-left: .5em;
 }
 .listText{
-    background-color: rgba(255, 255, 255, 0.575);
-    border-radius: 1px;
-    background-size: cover;
+    background-color: rgba(255, 255, 255, 0.63);
+}
+.dropdown-content{
+    display: flex;
+    flex-direction: column;
+    margin-right: auto;
+}
 
-}
-.WhiskeyList{
-    border: 2px rgb(94, 54, 37) solid;
-    margin-right: 10px;
-    margin-bottom: 10px;
-}
 .whiskeyListName{
     font-size: 10px; 
     color: black;
@@ -27,14 +28,8 @@
     font-size: 12px;
     opacity: 1;
 }
-.row{
-    height: 7em;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-.dropdown-add-btn{
+
+.dropdown-add-btn, .moveButton, .deleteBtn{
     color: white;
     width: 45px;
     padding: 2px;
@@ -43,29 +38,29 @@
     cursor: pointer;
     text-align: center;
     font-weight: 400;
-    background: rgb(94, 54, 37);
+    background: #722002;
     border-radius: 0px;
     -moz-border-radius: 0px;
     -webkit-border-radius: 20px 20px 20px 20px;
-
-  /* position: relative; */
-  /* z-index:2; */
+    margin-bottom: 2px;
 }
-.add-selection{
+.add-selection, .moveSelectionButton {
     color: white;
-    background: #21AA98;
-    padding: 2px;
+    background: #A52E03;
+    padding: 2px 6px 2px 6px;
     font-size: 11px;
     border: none;
     cursor: pointer;
     text-align: center;
-    /* font-weight: 900; */
-    /* margin-bottom: 5px; */
- 
+    margin-right: auto;
     border-radius: 0px;
     -moz-border-radius: 0px;
     -webkit-border-radius: 20px 20px 20px 20px;
 }
+.add-selection:active{
+    transform: translateY(5px);
+}
+
 .add-selection, .triedLst{
-    margin-bottom: 5px;
+    margin-bottom: 2px;
 }

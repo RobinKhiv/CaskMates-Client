@@ -1,44 +1,14 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
-import './WhiskeyListItem.css'
-import WhiskeyApiService from '../../Services/whiskey-api-service';
 import WhiskeyListContext from '../../Context/WhiskeyListContext';
 import CheckedStar from '../StarRatings/CheckedStar';
 import TokenService from '../../Services/token-api-service';
+import AddToListButton from '../AddToListButton/AddToListButton';
+import './WhiskeyListItem.css'
 
 
 export default class WhiskeyListItem extends Component {
-  constructor(){
-    super();
-    this.state={
-      showAddMenu: false
-    }
-  }
   static contextType = WhiskeyListContext;
-
-  showAddMenu = (e) => {
-    e.preventDefault();
-    this.setState({showAddMenu: true}, () => {
-      document.addEventListener('click', this.closeAddMenu)
-    });
-  }
-  
-  closeAddMenu = e => {
-    e.stopPropagation();
-    this.setState({showAddMenu: false}, () => {
-      document.removeEventListener('click', this.closeAddMenu)
-    })
-  }
-
-  addButton = () =>{
-    return (
-    <input type="button" className="dropdown-add-btn" name="addWhiskey" value="Add" onClick={this.showAddMenu}/>
-    )
-  }
-
-  addToList = (whiskey_Id, list_id) => {
-    WhiskeyApiService.addToList(whiskey_Id, list_id)  
-  }
 
   generateRatingStars= (value)=> {
      const checkedStar = [];
@@ -49,27 +19,22 @@ export default class WhiskeyListItem extends Component {
   }
 
   render() {
-    const {whiskey} = this.props;
+    const {whiskey_id, average_review_rating, image, whiskey_name} = this.props.whiskey;
+ 
     return (
-    <div className="col-3 WhiskeyList" style={{backgroundImage: `url(${whiskey.image})`}} >
-      <div className="listText">
-      <Link to={`/whiskeys/${whiskey.whiskey_id}`} className='whiskeyListItem'>
-        <div className="whiskeyListText">
-          <h2 className='whiskeyListName'>{whiskey.whiskey_name}</h2>
-          <p className="ratingText"> Rating: {this.generateRatingStars(whiskey.average_review_rating)} </p>
+      <div className="col-3 WhiskeyList" style={{backgroundImage: `url(${image})`}} >
+        <div className="listText">
+          <Link to={`/whiskeys/${whiskey_id}`} className='whiskeyListItem'>
+            <div className="whiskeyListText">
+              <h2 className='whiskeyListName'>{whiskey_name}</h2>
+              <p className="ratingText"> Rating: {this.generateRatingStars(average_review_rating)} </p>
+            </div>
+          </Link>
         </div>
-      </Link>
+        <div className='dropdown-add'>
+          {TokenService.hasAuthToken() ? <AddToListButton id={whiskey_id}/>: ''}
+        </div>
       </div>
-      <div className='dropdown-add'>
-        {TokenService.hasAuthToken() ? this.addButton(): ''}
-      {this.state.showAddMenu ? (
-        <div className="dropdown-content" >
-        <input type="button" name="FavoriteLst" className='add-selection' onClick={() => this.addToList(whiskey.whiskey_id, 1)} value="Favorite List"/><br/>
-        <input type="button" name="wishLst" className='add-selection' onClick={() => this.addToList(whiskey.whiskey_id, 2)} value="Wish List"/><br/>
-        <input type="button" name="alreadyTriedLst" className='add-selection triedLst' onClick={()=> this.addToList(whiskey.whiskey_id, 3)} value="Already Tried List"/><br/>
-      </div>) : ""}
-      </div>
-    </div>
     )
   }
 }

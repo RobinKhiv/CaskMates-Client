@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
 import WhiskeyContext from '../../Context/WhiskeyContext';
 import WhiskeyApiService from '../../Services/whiskey-api-service';
-import './WhiskeyReviewForm.css';
 
 export default class WhiskeyReviewForm extends Component {
   static defaultProps = {
@@ -14,7 +13,6 @@ export default class WhiskeyReviewForm extends Component {
     e.preventDefault();
     const whiskeyId = this.context.whiskey.id;
     const {rating, tasting} = e.target;
-    console.log(rating.value, tasting.value);
     WhiskeyApiService.postReview(
       whiskeyId, parseInt(rating.value), 
       {tasting: tasting.value}

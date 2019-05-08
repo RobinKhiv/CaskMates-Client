@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import AuthApiService from '../../Services/auth-api-service';
 import TokenService from '../../Services/token-api-service';
 import './LoginForm.css';
@@ -45,14 +44,10 @@ export default class LoginForm extends Component {
           <input type='password' name='password' className='loginFormPassword' placeholder='password'/><br/>
         </div>
         <input type='submit' name='submit' value='Log In' className='loginSubmit'/>
-        <Link to={'/register'}>
-          <input type='button' name='cancel' className='cancel-bt' value='Register'/>
-        </Link>
         <div role='alert row'>
          {error && <p className='red'>{error}</p>}
         </div>
       </form>
-    
     )
   }
 }

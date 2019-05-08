@@ -1,0 +1,32 @@
+button:focus{
+    background-color: red; 
+}
+.list-selection-button-container{
+    display:flex;
+    flex-direction: row;
+    margin-top: 1em;
+}
+.list-selection-form{
+    text-align: center;
+    margin-top: 1.3em;
+    color: #260000;
+}
+label[for="list-selection"]{
+    font-size: 16pt;
+    font-weight: bold;
+}
+button[name="list-selection"]{
+    margin-right: 4px;
+    border-radius: 2px;
+    border: none;
+    padding: 3px 10px 3px 10px;
+    background: rgb(189, 72, 29);
+    color: #260000;
+}
+button[name="list-selection"]:hover{
+    color: #F2D64B;
+}
+button[name="list-selection"]:focus{
+    background-color: #722002;
+    color: white
+}

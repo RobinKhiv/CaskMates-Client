@@ -16,14 +16,14 @@ export default class UserListItem extends Component {
   showMoveMenu = (e) => {
     e.preventDefault();
     this.setState({showMoveMenu: true}, () => {
-      document.addEventListener('mouseup', this.closeMoveMenu)
+      document.addEventListener('click', this.closeMoveMenu)
     });
   }
   
   closeMoveMenu = e => {
     e.stopPropagation();
     this.setState({showMoveMenu: false}, () => {
-      document.removeEventListener('mouseup', this.closeMoveMenu)
+      document.removeEventListener('click', this.closeMoveMenu)
     })
   }
 
@@ -40,22 +40,23 @@ export default class UserListItem extends Component {
   render() {
     const {whiskey} = this.props;
     return (
-    <div className="col-3 WhiskeyList userWhiskeys"style={{backgroundImage: `url(${whiskey.image})`}}>
+    <div className="col-3 WhiskeyList"style={{backgroundImage: `url(${whiskey.image})`}}>
       <div className='listText'>
-      <Link to={`/whiskeys/${whiskey.whiskey_id}`} className='whiskeyListItem'>
-      <div className="whiskeyListName">
-        <h2>{whiskey.whiskeyName}</h2>
+        <Link to={`/whiskeys/${whiskey.whiskey_id}`} className='whiskeyListItem'>
+          <div className="whiskeyListText">
+              <h2 className='whiskeyListName'>{whiskey.whiskeyName}</h2>
+          </div>
+        </Link>
       </div>
-      </Link>
-      </div>
-      <input type="button" name="moveWhiskey" value="Move to" onMouseDown={this.showMoveMenu}/>
-      {this.state.showMoveMenu ? (
-      <div className="menu" >
-        <input type="button" name="FavoriteLst" onMouseUp={() => this.moveToList(whiskey.whiskey_id, 1, whiskey.id, 'Favorite List')} value="Favorite List"/>
-        <input type="button" name="wishLst" onMouseUp={() => this.moveToList(whiskey.whiskey_id, 2,whiskey.id, 'Wish List')} value="Wish List"/>
-        <input type="button" name="alreadyTriedLst" onMouseUp={()=> this.moveToList(whiskey.whiskey_id, 3,whiskey.id, 'Already Tried')} value="Already Tried List"/>
-      </div>) : ""}
-      <input type="button" name="delete" onClick={() =>this.deleteFromList(whiskey.id)}value="remove"/>
+      <input type="button" name="moveWhiskey" className="moveButton" value="Move To" onClick={this.showMoveMenu}/>
+        {this.state.showMoveMenu && (
+          <div className="moveMenu" >
+            <input type="button" className="moveSelectionButton" name="FavoriteLst" onClick={() => this.moveToList(whiskey.whiskey_id, 1, whiskey.id, 'Favorite List')} value="Favorite List"/>
+            <input type="button" className="moveSelectionButton" name="wishLst" onClick={() => this.moveToList(whiskey.whiskey_id, 2,whiskey.id, 'Wish List')} value="Wish List"/>
+            <input type="button" className="moveSelectionButton" name="alreadyTriedLst" onClick={()=> this.moveToList(whiskey.whiskey_id, 3,whiskey.id, 'Already Tried')} value="Already Tried List"/>
+          </div>)
+        }
+      <input type="button" name="delete" className="deleteBtn" onClick={() =>this.deleteFromList(whiskey.id)}value="Remove"/>
     </div>
     )
   }

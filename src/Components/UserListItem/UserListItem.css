@@ -2,3 +2,22 @@
 .WhiskeyList{
   min-height: 7em;
 }
+.userListTitle{
+  width: 100%;
+  text-align: center;
+}
+input[name="delete"]{
+  background: rgb(209, 29, 29);
+  width: 5em;
+}
+input[name="moveWhiskey"]{
+  margin-right: 3px;
+  width: 5em;
+}
+.moveMenu{
+  display:flex;
+  flex-direction: column;
+}
+.moveSelectionButton{
+  margin-bottom: .2em;
+}

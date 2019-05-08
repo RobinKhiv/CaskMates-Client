@@ -1,21 +1,41 @@
 .whiskey-content-container{
     font-size: 16px;
-    margin-top: 40px;
-    
+    color: #260000;
 }
 .whiskeyPageTitle, .review-title{
     text-align: center;
+    margin-bottom: 3px;
+    margin-top: 3px;
 }
-.whiskeyContent, .userReview-container, .loginForm{ 
-    background-color: rgba(255, 255, 255, 0.575);
-    border-radius: 2px;
+.rating-text{
+    margin-top:0;
+    margin-bottom: 3px;
+}
+.whiskeyContent{
+    padding-top: 50px;
+}
+.userReview-container{
+  background-color: rgba(248, 248, 248, 0.952);
+  padding: 0 7px 7px 7px;
+  border: .3pt solid #5c2626;
+  border-radius: 4px;
+  margin-bottom: 8px;
+}
+.whiskeyContent, .loginForm, .review-container{ 
+    background-color: rgba(233, 219, 204, 0.788);
+    border: 1px solid #7220021f;
+
+    border-radius: 4px;
+    padding-top: 30px;
     padding: 10px;
     margin-bottom: 10px;
 }
-
-.whiskey-image{
+.description-container{
     float: left;
-    width: 30%;
+    margin-top: .2em;
+}
+li{
+    list-style: none;
 }
 
 strong{
@@ -24,18 +44,32 @@ strong{
 strong::after{
     content: "  ";
 }
-.userName-container{
-    float:left;
-    list-style: none;
+.userName{
+  margin-top:1px;
+  margin-bottom: 1px;
 }
 .WhiskeyPage__review-list{
-    padding-left: 10px;
+    padding-left: 0px;
 }
-.userReview-container{
-    margin-left: 100px;
+
+.whiskey-img{
+   margin-top:6px;
+   width:32%;
 }
-.li{
-    list-style: none;
+
+input[name="addReview"], input[name="addButton"]{
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    margin-top: 5px;
 }
-.row{
-    height: 100%;}
+.addReviewLink{
+    text-decoration: none;
+}
+.reviewButton{
+  background-color: #724023;
+  border: none;
+  -webkit-border-radius: 20px 20px 20px 20px;
+  color: white;
+  font-size: 11px;
+}

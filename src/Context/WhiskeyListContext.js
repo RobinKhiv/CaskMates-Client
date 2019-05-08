@@ -29,7 +29,6 @@ export class WhiskeyListProvider extends Component {
       alreadyTried: alredyTriedLst,
       wishList: wishLst 
     });
-  
   }
   removeWhiskeyFromState = list_id =>  {
     const stateCopy = {...this.state};
@@ -55,7 +54,6 @@ export class WhiskeyListProvider extends Component {
   clearError = () => {
     this.setState({ error: null })
   }
-
 
   render() {
     const value = {

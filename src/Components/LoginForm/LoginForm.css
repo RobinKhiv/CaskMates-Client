@@ -1,18 +1,48 @@
-.loginForm{
-    border: 1px solid black;
-    text-align: center;
-    width: max-content;
-    margin-top: 50px;
-    border-radius: 3px; 
+.login-container{
+    flex-direction: column;
 }
-.loginFormPassword, .login-username{
+.loginForm{
+    text-align: center;
+    margin-top: 2em;
+    border-radius: 3px; 
+    display: flex;
+    flex-direction: column;
     margin-left: 5px;
     margin-right: 5px;
 }
+
+.loginFormPassword, .login-username{
+    width: 100%
+}
 .loginSubmit{
-    margin-right: 5px;
+    margin-left: auto;
+    margin-right: auto;
 }
 .loginSubmit, .cancel-btn {
     margin-top: 5px;
     margin-bottom: 6px; 
+}
+
+.register{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(233, 219, 204, 0.788);
+    border: 1px solid #7220021f;
+    border-radius: 4px;
+    padding-left: 18px;
+    padding-right: 18px;
+    padding-bottom: 4px;
+    margin-bottom: 10px;
+}
+.registerAccount{
+    margin-top:2px;
+    margin-bottom: 2px;
+    font-size: 15px;
+}
+.signUpLink{
+    text-decoration: none;
+}
+input{
+    flex:1;
 }
