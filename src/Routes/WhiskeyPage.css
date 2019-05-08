@@ -73,3 +73,6 @@ input[name="addReview"], input[name="addButton"]{
   color: white;
   font-size: 11px;
 }
+img[alt="dripping alcohol"]{
+    background: #F2F2F2;
+}
