@@ -1,44 +1,42 @@
-import React, { Component } from 'react';
+import React, { useContext, useEffect } from 'react';
 import WhiskeySearchContext from '../Context/WhiskeySearchContext';
 import WhiskeyApiService from '../Services/whiskey-api-service';
 import WhiskeyListItem from '../Components/WhiskeyListItem/WhiskeyListItem';
 import WhiskeySearchForm from '../Components/WhiskeySearchForm/WhiskeySearchForm';
 import loadingpic from '../../src/loading picture/loading.gif';
 
-export default class WhiskeyLookupPage extends Component {
-  static contextType = WhiskeySearchContext
- 
-  componentDidMount() {   
-    this.context.clearError()
-    WhiskeyApiService.getWhiskeys()
-      .then(this.context.setWhiskeyList)
-      .catch(this.context.setError)
-  }
+const whiskeyLookupPage = props => {
+  const whiskeys = useContext(WhiskeySearchContext);
 
-  renderWhiskeys () {
-    const {whiskeyFilter = [] } =this.context;    
-    return whiskeyFilter.map(whiskey =>
+  useEffect(() => {
+    whiskeys.clearError()
+    WhiskeyApiService.getWhiskeys()
+      .then(whiskeys.setWhiskeyList)
+      .catch(whiskeys.setError)
+  }, []);
+
+  const renderWhiskeys = () => { 
+    return whiskeys.whiskeyFilter.map(whiskey =>
       <WhiskeyListItem key={whiskey.id} whiskey={whiskey}/>
       )
   }
-  renderLoading(){
+
+  const renderLoading = ()=>{
     return (
       <img className='col-3' src={loadingpic} alt='dripping alcohol'></img>
     )
   }
 
-  render() {
-    const {whiskeyFilter } =this.context; 
-    return (
+  return (
     <React.Fragment>
       <header className="whiskey-search-container row">
         <WhiskeySearchForm/>
       </header>
       <section className="whiskeyListPage row">
-        {!whiskeyFilter.length && this.renderLoading()}
-        {this.renderWhiskeys()}
+        {!whiskeys.whiskeyFilter.length && renderLoading()}
+        {renderWhiskeys()}
       </section>
     </React.Fragment>
     )
-  }
 }
+export default whiskeyLookupPage;
